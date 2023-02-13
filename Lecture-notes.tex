@@ -65,8 +65,8 @@ Let always $K$ be a field, $n \in \nat$.
 \begin{defi}
 A \emph{symmetric bilinear space over $K$}\index{symmetric bilinear!space} is a pair $(V, B)$ where
 \begin{itemize}
-\item $V$ is a finite-dimensionl vector space over $K$, and
-\item $B : V \times V \to K$ is symmetric and bilinear, i.e.~for all $x, x', y \in V$ and $a \in K$ we have
+\item $V$ is a finite-dimensional vector space over $K$, and
+\item $B : V \times V \to K$ is a symmetric and bilinear map, i.e.~for all $x, x', y \in V$ and $a \in K$ we have
 \begin{align*}
 B(x, y) &= B(y, x), \\
 B(x+x',y) &= B(x, y) + B(x', y), \\
@@ -81,7 +81,7 @@ Let $n = \dim (V, B)$. Given a basis $\mc{B} = (e_1, \ldots, e_n)$ of $V$, we de
 \begin{prop}
 Let $V = K^n$ and let $\mf{B} = (e_1, \ldots, e_n)$ be the canonical basis.
 Let $B$ be a symmetric bilinear form on $V$.
-For column vectors $x = [x_1 \ldots x_n]^T$ and $y = [y_1, \ldots, y_n]$ we have
+For column vectors $x = [x_1 \ldots x_n]^T$ and $y = [y_1, \ldots, y_n]^T$ we have
 $$ B(x, y) = x^T\mc{M}_{\mc{B}}(B)y.$$
 \end{prop}
 \begin{proof}
@@ -103,7 +103,7 @@ We define the dimension of $(V, q)$ to be the dimension of $V$, and denote this 
 \end{defi}
 \begin{defi}
 Let $(V, B)$ and $(V', B')$ be symmetric bilinear spaces over $K$.
-An isomorphism of $K$-vector spaces $I : V \to V'$ is called \emph{isometry between $(V, B)$ and $(V', B')$}\index{isometry} if, for all $v, w \in V$, one has $B(v, w) = B'(I(v), I(w))$.
+An isomorphism of $K$-vector spaces $I : V \to V'$ is called an \emph{isometry between $(V, B)$ and $(V', B')$}\index{isometry} if, for all $v, w \in V$, one has $B(v, w) = B'(I(v), I(w))$.
 Similarly, given quadratic spaces $(V, q)$ and $(V', q')$ over $K$, an isomorphism of $K$-vector spaces $I : V \to V'$ is called an \emph{isometry between $(V, q)$ and $(V', q')$} if, for all $v \in V$, one has $q(v) = q'(I(v))$.
 
 We call two symmetric bilinear spaces $(V, B)$ and $(V, B')$ (respectively two quadratic spaces $(V, q)$ and $(V', q')$) \emph{isometric}, which we denote by $(V, B) \cong (V', B')$ (respectively $(V, q) \cong (V', q')$) if there exists an isometry between them.
@@ -143,14 +143,14 @@ C = \begin{bmatrix}
 \end{bmatrix}.
 \end{displaymath}
 \end{eg}
-We saw that, to a quadratic form $q$, one a symmetric bilinear form $\mf{b}_q$ on the same space.
+We saw that, to a quadratic form $q$, one can associate a symmetric bilinear form $\mf{b}_q$ on the same space.
 It is also possible to obtain a quadratic form from a symmetric bilinear form: if $(V, B)$ is a symmetric bilinear space, then
 $$ q_B : V \to K : v \mapsto B(v, v)$$
 is easily seen to be a quadratic form.
 If $\charac(K) \neq 2$, then these two operations are each others inverses (up to scaling by $\frac{1}{2}$), and hence the studies of quadratic and symmetric bilinear forms over $K$ are essentially the same:
 \begin{prop}
 Assume $\charac(K) \neq 2$. Let $(V, q)$ be a quadratic space.
-Then $q$ is equal to the quadratic form associated to the polar form $\frac{1}{2}\mf{b}_q$.
+Then $q$ is equal to the quadratic form associated to the form $\frac{1}{2}\mf{b}_q$.
 Conversely, if $(V, B)$ is a symmetric bilinear space, then $B$ is equal to $\frac{1}{2}\mf{b}_q$ where $q = q_B$.
 \end{prop}
 \begin{proof}
@@ -164,13 +164,13 @@ We now go on to study basic properties of quadratic forms.
 Let $(V, q)$ be a quadratic space over $K$.
 \begin{itemize}
 \item We call $q$ \emph{isotropic}\index{isotropic} if there exists $v \in V \setminus \lbrace 0 \rbrace$ such that $q(v) = 0$, or \emph{anisotropic}\index{anisotropic|see{isotropic}} otherwise.
-\item Given $a \in K^\times$, we say that \emph{$q$ represents $a$}\emph{representation!of an element by a form} if $\exists v \in V$ with $q = q(v)$.
+\item Given $a \in K^\times$, we say that \emph{$q$ represents $a$}\index{representation!of an element by a form} if $\exists v \in V$ with $a = q(v)$.
 We write
 $$ D_K(q) = \lbrace a \in K^\times \mid \exists v \in V : a = q(v) \rbrace.$$
 If $D_K(q) = K^\times$, we say that $q$ is \emph{universal}\index{universal}.
 \end{itemize}
 \end{defi}
-\begin{egs}
+\begin{egs} \
 \begin{enumerate}
 \item Let $f(X_1, X_2) = X_1 \cdot X_2$. Then $q_f$ is isotropic, since $f(1, 0) = 0$.
 $q_f$ is also universal, since, $f(1, a) = a$ for any $a \in K^\times$.
@@ -182,7 +182,7 @@ $D_K(q_f)$ consists of those elements of $K$ which are squares.
 \end{egs}
 The last example is somewhat peculiar: the quadratic form $q_f$ with $f(X_1, X_2) = (X_1 + X_2)^2$ is of dimension $2$, but after a base change, one of the variables disappears. Indeed,
 $$ f\left(\frac{X_1 + X_2}{2}, \frac{X_1 - X_2}{2}\right) = X_1^2.$$
-We will often want to exclude from our study quadratic forms which have this property, which we now study in some detail.
+We will often want to exclude from our study quadratic forms which have this property.
 
 For a $K$-vector space $V$, we denote by $V^\ast$ the dual space, i.e.~the space of linear maps $V \to K$.
 Recall that $\dim(V^\ast) = \dim(V)$.
@@ -202,7 +202,8 @@ Exercise.
 \begin{defi}
 We call a symmetric bilinear space $(V, B)$ \emph{nonsingular}\index{nonsingular} if the above equivalent conditions hold.
 We call a quadratic space $(V, q)$ nonsingular if its polar form is nonsingular.
-Otherwise, we call the form \emph{singular}.
+Otherwise, we call the space \emph{singular}.
+We use the same terminology for the symmetric bilinear and quadratic forms themselves.
 \end{defi}
 We now show that, at least over fields of characteristic not $2$, singular forms are precisely those for which, after a base change, one of the variables disappears.
 \begin{prop}\label{P:nonsingular-polynomials}
@@ -223,7 +224,12 @@ But then in particular $0 = \mf{b}_q(v, v) = 2q(v)$ and thus $q(v) = 0$.
 It follows that, for any $w \in V$, we have $q(v + w) = q(v) + q(w) + \mf{b}_q(v, w) = q(v)$, so \eqref{it:singular-2} holds.
 \end{proof}
 If $\charac(K) \neq 2$, a nonsingular quadratic form over $K$ is also called \emph{regular} or \emph{nondegenerate}.
-Note that, if $\charac(K) = 2$, these terms have more specialised meanings.
+Note that, if $\charac(K) = 2$, these terms have more specialised, distinct meanings.
+
+\begin{rem}
+So far, I have been somewhat careful in making the distinction between a symmetric bilinear/quadratic \textit{space} and a symmetric bilinear/quadratic \textit{form}.
+This makes notation and speaking somewhat heavy. I will in the future often simply refer to the forms themselves, taking the convention that a symmetric bilinear/quadratic space `knows' its domain.
+\end{rem}
 
 \subsection{Orthogonality and diagonalisation}
 \begin{defi}
@@ -239,7 +245,7 @@ Similarly, given $M' \subseteq V$, we say that $M$ is \emph{orthogonal to $M'$ (
 
 We write
 $$ M^\perp = \lbrace v \in V \mid \forall w \in M : B(v, w) = 0 \rbrace$$
-and call it the \emph{orthogonal space of $M$}. We write $v^\perp$ instead of $\lbrace v \rbrace^\perp$.
+and call it the \emph{orthogonal space of $M$} - note that it is always a subspace of $V$. We write $v^\perp$ instead of $\lbrace v \rbrace^\perp$.
 
 If $U \subseteq V$ is a subspace and $V = U \oplus U^\perp$, we call $U^\perp$ an \emph{orthogonal complement of $U$ in $V$}.
 \end{defi}
@@ -255,11 +261,11 @@ Consider the $K$-linear maps
 \varphi_1 &: U^\perp \to V^\ast : v \mapsto (w \mapsto B(v, w)) \\
 \varphi_2 &: V^\ast \to U^\ast : f \mapsto f\vert_U.
 \end{align*}
-We observe that $\varphi_1$ is injective by the nonsingularity of $(V, B)$, that $\varphi_2$ is surjective, and that the image of $\varphi_1$ is precisely the kernal of $\varphi_2$ by definition of $U^\perp$.
+We observe that $\varphi_1$ is injective by the nonsingularity of $(V, B)$, that $\varphi_2$ is surjective, and that the image of $\varphi_1$ is precisely the kernel of $\varphi_2$ by definition of $U^\perp$.
 As such, we compute that
 \begin{align*}
-\dim V &= \dim V^\ast & \dim(\Ker \varphi_2) + \dim(\Img \varphi_2) \\
-&= \dim(\Img \varphi_1) + \dim U^\ast &= \dim (U^\perp) + \dim(U)
+\dim V &= \dim V^\ast = \dim(\Ker \varphi_2) + \dim(\Img \varphi_2) \\
+&= \dim(\Img \varphi_1) + \dim U^\ast = \dim (U^\perp) + \dim(U)
 \end{align*}
 as desired.
 
@@ -292,13 +298,13 @@ Easy verifications.
 \end{proof}
 \begin{prop}\label{P:intrinsic-orth-sum}
 Let $(V, q)$, $(V_1, q_1)$ and $(V_2, q_2)$ be quadratic spaces over $K$.
-Then $q \cong q_1 \perp q_2$ if and only if there are $K$-subspaces $W_1$ and $W_2$ of $V$ with $W_1 \perp W_2$ with respect to $q$, $V = W_1 \oplus W_2$, and such that $(W_i, q\vert_{W_i}) \cong (V_i, q_i)$ for $i = 1, 2$.
+Then $q \cong q_1 \perp q_2$ if and only if there are $K$-subspaces $W_1$ and $W_2$ of $V$ with $W_1 \perp W_2$ with respect to $\mf{b}_q$, $V = W_1 \oplus W_2$, and such that $(W_i, q\vert_{W_i}) \cong (V_i, q_i)$ for $i = 1, 2$.
 \end{prop}
 \begin{proof}
 Suppose that $\iota$ is an isomorphism $q_1 \perp q_2 \to q$ and let $W_1$ and $W_2$ be the images under this isomorphism of $V_1 \times \lbrace 0 \rbrace$ and $\lbrace 0 \rbrace \times V_2$ respectively. One verifies easily that these are as desired.
 
 Conversely, assume that $W_1$ and $W_2$ are subspaces of $V$ with $W_1 \perp W_2$, $V = W_1 \oplus W_2$, and such that $(W_i, q\vert_{W_i}) \cong (V_i, q_i)$ for $i = 1, 2$.
-Without loss of generality, we may assume that $q_i = q\vert_{W_i}$.
+Without loss of generality, we may assume that $V_i = W_i$ and $q_i = q\vert_{W_i}$.
 Let $\iota$ be the unique $K$-linear map $V \to V_1 \times V_2$ which maps a vector $w \in W_1$ to $(w, 0)$ and a vector $w \in W_2$ to $(0, w)$.
 Clearly this is an isomorphism of $K$-vector spaces.
 Consider an arbitrary vector in $V$, which we may write as $w_1 + w_2$ for $w_1 \in W_1$ and $w_2 \in W_2$.
@@ -311,11 +317,12 @@ Hence $\iota$ is the desired isometry.
 \end{proof}
 We now discuss a special class of quadratic forms called diagonal forms. As it will turn out, in characteristic different from $2$, every quadratic form is isometric to a diagonal form (see \Cref{C:diagonalisation}).
 \begin{defi}
-Let $a_1, \ldots, a_n \in K$. We denote by $\langle a_1, \ldots, a_n \rangle$ the quadratic form
+Let $a_1, \ldots, a_n \in K$. We denote by $\langle a_1, \ldots, a_n \rangle_K$ the quadratic form
 $$ K^n \to K : (x_1, \ldots, x_n) \mapsto \sum_{i=1}^n a_ix_i^2.$$
 We call such a form a \emph{diagonal form}\index{diagonal form}.
+If the field $K$ is clear from the context we might simply write $\langle a_1, \ldots, a_n \rangle$ instead of $\langle a_1, \ldots, a_n \rangle_K$.
 \end{defi}
-Note that $\langle a_1, \ldots, a_n \rangle \cong \langle a_1 \rangle \perp \ldots \perp \langle a_n \rangle$.
+Note that $\langle a_1, \ldots, a_n \rangle_K \cong \langle a_1 \rangle_K \perp \ldots \perp \langle a_n \rangle_K$.
 \begin{prop}\label{P:diagforms-singular}
 Let $n \in \nat$ and $a_1, \ldots, a_n \in K$, let $q = \langle a_1, \ldots, a_n \rangle$.
 If $\charac(K) \neq 2$, then $q$ is singular if and only if $a_i = 0$ for some $i \in \lbrace 1, \ldots, n \rangle$.
@@ -339,7 +346,7 @@ We may thus restrict our quadratic form to $W$, and assume without loss of gener
 
 Now take $v \in V$ with $q(v) = d$.
 Set $U = v^\perp$.
-We have $v \not\in v^\perp$ (since $\mf{b}_q(v, v) = 2d \neq 0$) and $\dim(U) = \dim(V) - 1$, hence $V = Kv \oplus U$.
+We have $v \not\in v^\perp$ (since $\mf{b}_q(v, v) = 2d \neq 0$) and $\dim(U) = \dim(V) - 1$ by \Cref{P:dim-duality}, hence $V = Kv \oplus U$.
 Clearly $q\vert_{Kv} \cong \langle d \rangle$, so $q \cong \langle d \rangle \perp (U, q\vert_U)$ in view of \Cref{P:intrinsic-orth-sum}.
 \end{proof}
 \begin{cor}\label{C:diagonalisation}
