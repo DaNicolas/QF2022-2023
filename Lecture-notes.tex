@@ -56,6 +56,10 @@
 \maketitle
 \tableofcontents
 
+\subsection*{Notations and conventions}
+We denote by $\nat$ the set of natural numbers, including zero.
+For a ring $R$, we denote by $R^\times$ the set of invertible elements of $R$; if $R$ is a field, then $R^\times = R \setminus \lbrace 0 \rbrace$.
+
 \section{Lecture 1}
 We follow to a large extent the exposition from Lam's book \autocite{Lam}.
 For this introductory course, we focus on fields of characteristic different from $2$.
@@ -274,7 +278,7 @@ For the second statement, observe that we trivially have $U \subseteq (U^\perp)^
 We now define an operation on the set of quadratic spaces over $K$.
 \begin{prop}\label{P:orth-sum}
 Let $(V_1, q_1)$ and $(V_2, q_2)$ be quadratic spaces over $K$. Let $V = V_1 \times V_2$ and consider the map
-$$ q : V \to K : (x, y) \mapsto q(x) + q(y). $$
+$$ q : V \to K : (x, y) \mapsto q_1(x) + q_2(y). $$
 Furthermore, consider the natural embeddings $\iota_1 : V_1 \to V : x \mapsto (x, 0)$ and $\iota_2 : V_2 \to V : x \mapsto (0, x)$.
 We have that $(V, q)$ is a quadratic space, and $q$ is nonsingular if and only if both $q_1$ and $q_2$ are.
 Furthermore, $i_1(V_1) \perp i_2(V_2)$ with respect to $\mf{b}_q$.
