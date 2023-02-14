@@ -57,13 +57,14 @@
 \tableofcontents
 
 \subsection*{Notations and conventions}
-We denote by $\nat$ the set of natural numbers, including zero.
+We denote by $\nat$ the set of natural numbers.
+We write $\nat^+$ for the proper subset of non-zero numbers.
 For a ring $R$, we denote by $R^\times$ the set of invertible elements of $R$; if $R$ is a field, then $R^\times = R \setminus \lbrace 0 \rbrace$.
 
 \section{Lecture 1}
 We follow to a large extent the exposition from Lam's book \autocite{Lam}.
 For this introductory course, we focus on fields of characteristic different from $2$.
-We recommend the book of Elman, Karpenko and Merkurjev \autocite{ElmanKarpenkoMerkurjev} for those who want to learn more about quadratic form theory over fields of arbitrary charcacteristic.
+We recommend the book of Elman, Karpenko and Merkurjev \autocite{ElmanKarpenkoMerkurjev} for those who want to learn more about quadratic form theory over fields of arbitrary characteristic.
 \subsection{Bilinear and quadratic forms}
 Let always $K$ be a field, $n \in \nat$.
 \begin{defi}
@@ -185,7 +186,7 @@ $D_K(q_f)$ consists of those elements of $K$ which are squares.
 \end{enumerate}
 \end{egs}
 The last example is somewhat peculiar: the quadratic form $q_f$ with $f(X_1, X_2) = (X_1 + X_2)^2$ is of dimension $2$, but after a base change, one of the variables disappears. Indeed,
-$$ f\left(\frac{X_1 + X_2}{2}, \frac{X_1 - X_2}{2}\right) = X_1^2.$$
+$$ f\left(X_1 - X_2, X_2\right) = X_1^2.$$
 We will often want to exclude from our study quadratic forms which have this property.
 
 For a $K$-vector space $V$, we denote by $V^\ast$ the dual space, i.e.~the space of linear maps $V \to K$.
