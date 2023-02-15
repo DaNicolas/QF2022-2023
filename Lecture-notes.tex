@@ -212,20 +212,22 @@ We use the same terminology for the symmetric bilinear and quadratic forms thems
 \end{defi}
 We now show that, at least over fields of characteristic not $2$, singular forms are precisely those for which, after a base change, one of the variables disappears.
 \begin{prop}\label{P:nonsingular-polynomials}
-Let $(V, q)$ be a quadratic space. Consider the statements
+Let $(V, q)$ be a quadratic space over $K$ and $v \in V$. Consider the statements
 \begin{enumerate}[(a)]
-\item\label{it:singular-1} $(V, q)$ is singular.
-\item\label{it:singular-2} $\exists v \in V \setminus \lbrace 0 \rbrace$ such that for all $w \in V$ we have $q(w + v) = q(w)$.
+\item\label{it:singular-1} $\mf{b}_q(v, w) = 0$ for all $w \in V$,
+\item\label{it:singular-2} for all $w \in V$ we have $q(w + v) = q(w)$.
 \end{enumerate}
 We have that \eqref{it:singular-2} $\Rightarrow$ \eqref{it:singular-1} in general.
 If $\charac(K) \neq 2$, then \eqref{it:singular-1} and \eqref{it:singular-2} are equivalent.
+
+In particular, it follows that, if $\charac(K) \neq 2$, a quadratic space $(V, q)$ is singular if and only if there exists $v \in V \setminus \lbrace 0 \rbrace$ such that for all $w \in V$ we have $q(w+v) = q(w)$.
 \end{prop}
 \begin{proof}
-If \eqref{it:singular-2} holds, then $q(v) = q(v + 0) = q(0) = 0$, whence for any $w \in V$ we have $\mf{b}_q(v, w) = q(v + w) - q(v) - q(w) = 0$. Thus, $(V, q)$ is singular.
+If \eqref{it:singular-2} holds, then $q(v) = q(v + 0) = q(0) = 0$, whence for any $w \in V$ we have $\mf{b}_q(v, w) = q(v + w) - q(v) - q(w) = 0$. %Thus, $(V, q)$ is singular.
 
 Now assume that $\charac(K) \neq 2$ and \eqref{it:singular-1} holds.
-Then there exists $v \in V$ such that $\mf{b}_q(v, w) = 0$ for all $w \in V$.
-But then in particular $0 = \mf{b}_q(v, v) = 2q(v)$ and thus $q(v) = 0$.
+%Then there exists $v \in V$ such that $\mf{b}_q(v, w) = 0$ for all $w \in V$.
+Then in particular $0 = \mf{b}_q(v, v) = 2q(v)$ and thus $q(v) = 0$.
 It follows that, for any $w \in V$, we have $q(v + w) = q(v) + q(w) + \mf{b}_q(v, w) = q(v)$, so \eqref{it:singular-2} holds.
 \end{proof}
 If $\charac(K) \neq 2$, a nonsingular quadratic form over $K$ is also called \emph{regular} or \emph{nondegenerate}.
@@ -346,7 +348,7 @@ Clearly $d = d \cdot 1^2 + q'(0) \in D_K(\langle d \rangle \perp (V', q'))$ for 
 
 Conversely, assume that $d \in D_K(q)$.
 Let $W$ be any subspace of $V$ such that $V = V^\perp \oplus W$.
-Then $(W, q\vert_W)$ is nonsingular, and $D_K(q\vert_W) = D_K(q)$.
+Then $(W, q\vert_W)$ is nonsingular, and, in view of \Cref{P:nonsingular-polynomials}, we have $D_K(q\vert_W) = D_K(q)$.
 We may thus restrict our quadratic form to $W$, and assume without loss of generality that $q$ is nonsingular.
 
 Now take $v \in V$ with $q(v) = d$.
