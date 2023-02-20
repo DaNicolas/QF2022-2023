@@ -470,8 +470,8 @@ Exercise.
 \end{proof}
 
 \begin{prop}\label{P:splitting-off}
-Let $(V, q)$ be a nonsingular quadratic space, $W$ a subspace of $V$, $W'$ an orthogonal complement of $W$.
-If $(W, q\vert_W)$ is nonsingular, then
+Let $(V, q)$ be a nonsingular quadratic space, $W$ a nonsingular subspace of $V$, $W'$ an orthogonal complement of $W$.
+Then
 $(V, q) \cong (W, q\vert_W) \perp (W', q\vert_{W'}),$
 and also $(W', q\vert_{W'})$ is nonsingular.
 \end{prop}
@@ -554,21 +554,27 @@ If $(V, q) \perp (V_1, q_1) \cong (V, q) \perp (V_2, q_2)$, then $(V_1, q_1) \co
 \end{thm}
 \begin{proof}
 By \Cref{C:diagonalisation} we may assume that $(V, q) \cong \langle a_1, \ldots, a_n \rangle$ for some $a_1, \ldots, a_n \in K$.
-By inducting on $n$, we reduce to the situation $n = 1$.
-That is, we need to show that, if $\langle a \rangle_K \perp (V_1, q_1) \cong \langle a \rangle_K \perp (V_2, q_2)$, then $(V_1, q_1) \cong (V_2, q_2)$.
-Let $\iota : \langle a \rangle_K \perp (V_1, q_1) \to \langle a \rangle_K \perp (V_2, q_2)$ be an isometry.
-We consider two cases.
-
-\underline{Case 1: $a \neq 0$}: 
+We consider two special cases first.
+%By inducting on $n$, we reduce to the situation $n = 1$.
+%Let $\iota : \langle a \rangle_K \perp (V_1, q_1) \to \langle a \rangle_K \perp (V_2, q_2)$ be an isometry.
+\underline{Case 1: $n=1$ and $a \neq 0$}: 
+We need to show that, if $\langle a \rangle_K \perp (V_1, q_1) \cong \langle a \rangle_K \perp (V_2, q_2)$, then $(V_1, q_1) \cong (V_2, q_2)$.
 Let $v = \iota(1, 0)$.
 We have $(\langle a \rangle_K \perp q_2)(v) = (\langle a \rangle_K \perp q_1)(1 , 0) = a\cdot 1^2 = a = (\langle a \rangle_K \perp q_2)(1, 0)$.
+
 By \Cref{L:O(q)-transitive} there exists an isometry $\tau : \langle a \rangle_K \perp (V_2, q_2) \to \langle a \rangle_K \perp (V_2, q_2)$ with $\tau(v) = (1, 0)$.
 Thus, $\tau \circ \iota$ gives an isometry $\langle a \rangle_K \perp (V_1, q_1) \to \langle a \rangle_K \perp (V_2, q_2)$ mapping $(1, 0)$ to $(1, 0)$.
 Furthermore, since $K(1, 0) \perp (\lbrace 0 \rbrace \times V_1)$ (in $(K \times V_1, \langle a \rangle_K \perp q_1)$) and isometries preserve orthogonality, we obtain $K(1, 0) \perp (\tau \circ \iota)(\lbrace 0 \rbrace \times V_1)$ (in $(K \times V_2, \langle a \rangle_K \perp q_2)$).
 So, we must have $(\tau \circ \iota)(\lbrace 0 \rbrace \times V_1) = \lbrace 0 \rbrace \times V_2$, whereby $\tau \circ \iota$ induces an isometry $(V_1, q_1) \to (V_2, q_2)$, as desired.
 
-\underline{Case 2: $a = 0$}: 
-TODO %TODO
+\underline{Case 2: $n \geq 1$, $a_1 = \ldots = a_n = 0$, and $(V_1, q_1)$ is nonsingular}:
+In this case, $(V, q)$ is totally isotropic.
+We have $(V \times V_1)^\perp = V^\perp \times V_1^\perp = V^\perp \times \lbrace 0 \rbrace$.
+By comparing dimensions, we see that also $(V_2, q_2)$ is nonsingular, and $(V \times V_2)^\perp = V^\perp \times V_2^\perp = V^\perp \times \lbrace 0 \rbrace$.
+In view of \Cref{P:decomposition-totally-isotropic} we obtain that $(V_1, q_1) \cong ((V \times V_1)/(V \times V_1)^\perp, \overline{q \perp q_1}) \cong ((V \times V_2)/(V \times V_2)^\perp, \overline{q \perp q_2}) \cong (V_2, q_2)$.
+
+\underline{General case}:
+This follows inductively from the first two cases, since by \Cref{P:decomposition-totally-isotropic} both $(V_1, q_1)$ and $(V, q)$ can be decomposed uniquely up to isometry as the orthogonal sum of an nonsingular quadratic form and a totally isotropic one.
 \end{proof}
 
 \begin{thm}[Witt Decomposition Theorem]\label{T:Witt-Decomposition}
