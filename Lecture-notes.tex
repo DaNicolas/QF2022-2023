@@ -542,14 +542,14 @@ We will prove them, as Witt did in the 1930'ies, under the assumption that $\cha
 Versions in characteristic 2 exist and can be proven with extra assumptions and a lot more work, see \autocite[Section 8]{ElmanKarpenkoMerkurjev}.
 \begin{lem}\label{L:O(q)-transitive}
 Assume that $\charac(K) \neq 2$.
-Let $(V, q)$ be a quadratic space, and let $v, w \in V$ be such that $q(x) = q(y) \neq 0$.
+Let $(V, q)$ be a quadratic space, and let $v, w \in V$ be such that $q(v) = q(w) \neq 0$.
 There exists an isometry $\tau: (V, q) \to (V, q)$ such that $\tau(x) = y$.
 \end{lem}
 \begin{proof}
 One computes that $q(v + w) + q(v - w) = 4q(v) \neq 0$, so at least one of $q(v+w)$ and $q(v-w)$ is non-zero.
 Replacing $w$ by $-w$ if necessary, we may assume that $q(v-w) \neq 0$.
 Now consider the map
-$$\tau : V \to V : u \mapsto u - \frac{\mf{b}_q(u, x-y)}{q(x-y)}(x-y).$$
+$$\tau : V \to V : u \mapsto u - \frac{\mf{b}_q(u, v-w)}{q(v-w)}(v-w).$$
 One verifies that $\tau$ gives an isometry $(V, q) \to (V, q)$, and that $\tau(v) = w$, as desired; see Exercise \eqref{ex-reflections}.
 \end{proof}
 
@@ -589,7 +589,7 @@ So, we must have $(\tau \circ \iota)(\lbrace 0 \rbrace \times V_1) = \lbrace 0 \
 
 \begin{thm}[Witt Decomposition Theorem]\label{T:Witt-Decomposition}
 Assume $\charac(K) \neq 2$.
-Let $(V, q)$ be a quadratic spaces.
+Let $(V, q)$ be a quadratic space.
 There exist quadratic spaces $(V_t, q_t)$, $(V_h, q_h)$ and $(V_a, q_a)$ such that
 $$ (V, q) \cong (V_t, q_t) \perp (V_h, q_h) \perp (V_a, q_a)$$ where
 \begin{itemize}
