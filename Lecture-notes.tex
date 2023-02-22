@@ -434,11 +434,11 @@ Nonsingular one-dimensional quadratic forms are always anisotropic.
 We call the quadratic form $(K^2, q_f)$ with $f(X_1, X_2) = X_1 \cdot X_2$ the \emph{hyperbolic plane over $K$}\index{hyperbolic!plane} and denote it by $\mbb{H}_K$.
 \end{defi}
 \begin{prop}\label{P:hyperbolic-plane}
-Let $(V, q)$ be a nonsingular, isotropic quadratic space over $K$.
-Then there is a subform of $(V, q)$ isometric to $\mbb{H}_K$.
+Let $(V, q)$ be a nonsingular quadratic space over $K$.
+Let $v \in V \setminus \lbrace 0 \rbrace$ such that $q(v) = 0$.
+Then there is a subspace $W \subseteq V$ with $v \in W$ such that $(W, q\vert_W)$ is isometric to $\mbb{H}_K$.
 \end{prop}
 \begin{proof}
-Let $v \in V \setminus \lbrace 0 \rbrace$ be such that $q(v) = 0$.
 Since $(V, q)$ is nonsingular, there exists $w \in V$ such that $a = \mf{b}_q(v, w) \neq 0$.
 We may replace $w$ by $a^{-1}w$ and assume without loss of generality that $a = 1$.
 Observe that $w \not\in Kv$, so that $W = Kv \oplus Kw$ is a $2$-dimensional subspace of $V$.
@@ -479,7 +479,7 @@ and also $(W^\perp, q\vert_{W^\perp})$ is nonsingular.
 \begin{proof}
 Since $(V, q)$ is nonsingular, we have $\dim W + \dim W^\perp = \dim V$ by \Cref{P:dim-duality}.
 Since $(W, q\mid_W)$ is nonsingular, we further have $W \cap W^\perp = \lbrace 0 \rbrace$.
-Hence, we obtain $W \oplus W^\perp$, and the natural induced $K$-isomorphism $V \to W \times W^\perp$ gives the required isometry $(V, q) \cong (W, q\vert_W) \perp (W^\perp, q\vert_{W^\perp})$.
+Hence, we obtain $V = W \oplus W^\perp$, and the natural induced $K$-isomorphism $V \to W \times W^\perp$ gives the required isometry $(V, q) \cong (W, q\vert_W) \perp (W^\perp, q\vert_{W^\perp})$; see \Cref{P:intrinsic-orth-sum}.
 
 Finally, since $(W^\perp)^\perp = W$ by \Cref{P:dim-duality}, we obtain $(W^\perp)^\perp \cap W^\perp = W \cap W^\perp = \lbrace 0 \rbrace$, whereby $(W^\perp, q\vert_{W^\perp})$ is nonsingular.
 \end{proof}
@@ -505,10 +505,13 @@ Then $Kw_1 \oplus \ldots \oplus Kw_n$ is an $n$-dimensional totally isotropic su
 
 Conversely, assume \eqref{it:hyperbolic-form-1}.
 We argue via induction on $n$ - recall that the case $n = 0$ is covered, so we assume $n \geq 1$.
-Let $W$ be a totally isotropic subspace of $V$ of dimension $n$.
-By \Cref{P:hyperbolic-plane} there is a subspace $W'$ of $V$ such that $(W', q\vert_{W'}) \cong \mbb{H}_K$, and by \Cref{P:splitting-off} this implies that $(V, q) \cong \mbb{H}_K \perp (U, q\vert_U)$ for $U=(W')^\perp$, and furthermore $(U, q\vert_U)$ is nonsingular.
-Observe that $\dim(W \cap W') \leq 1$, since $(W', q\vert_{W'})$ is not totally isotropic.
-By \Cref{P:dim-duality} we have that $\dim(W \cap W') + \dim(W \cap U) = \dim(W) = n$, and thus $\dim(W \cap U) \geq n-1$, whereby $(U, q\vert_U)$ contains a totally isotropic subspace of dimension $n-1$.
+Let $W$ be a totally isotropic subspace of $V$ of dimension $n$ and let $v \in W \setminus \lbrace 0 \rbrace$.
+By \Cref{P:hyperbolic-plane} there exists $w \in V$ such that, for $W' = Kv \oplus Kw$, we have $(W', q\vert_{W'}) \cong \mbb{H}_K$.
+By \Cref{P:splitting-off} this implies that $(V, q) \cong \mbb{H}_K \perp (U, q\vert_U)$ for $U=(W')^\perp$, and furthermore $(U, q\vert_U)$ is nonsingular.
+Further, since $W \subseteq v^\perp$, we have
+$$ U \cap W = (W')^\perp \cap W = v^\perp \cap w^\perp \cap W = w^\perp \cap W $$
+whereby $\dim(W \cap U) \geq n-1$.
+Hence $(U, q\vert_U)$ contains a totally isotropic subspace $W \cap U$ of dimension $n-1$.
 The statement now follows by the induction hypothesis.
 \end{proof}
 \begin{cor}\label{C:hyperbolic-form}
