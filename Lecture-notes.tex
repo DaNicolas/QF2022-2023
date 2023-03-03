@@ -50,6 +50,7 @@
 \DeclareMathOperator{\trdeg}{trdeg}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\rad}{rad}
+\newcommand{\disc}{\mathrm{d}}
 
 \title{Quadratic forms and class fields II: lecture notes}
 \author{Nicolas Daans}
@@ -87,7 +88,7 @@ B(ax, y) &= aB(x, y).
 We call the map $B$ a \emph{symmetric bilinear form on $V$}.\index{symmetric bilinear!form}
 We define the dimension of $(V, B)$ to be the dimension of $V$, and denote this by $\dim(V, B)$ or simply $\dim B$.
 
-Let $n = \dim (V, B)$. Given a basis $\mc{B} = (e_1, \ldots, e_n)$ of $V$, we define $\mc{M}_\mc{B}(B) = [B(e_i, e_j)]_{i, j=1}^n$, which we call \emph{the matrix of $(V, B)$ with respect to $\mc{B}$}.
+Let $n = \dim (V, B)$. Given a basis $\mc{B} = (e_1, \ldots, e_n)$ of $V$, we define $\mc{M}_\mc{B}(B) = [B(e_j, e_i)]_{i, j=1}^n$, which we call \emph{the matrix of $(V, B)$ with respect to $\mc{B}$}.
 \end{defi}
 \begin{prop}
 Let $V = K^n$ and let $\mf{B} = (e_1, \ldots, e_n)$ be the canonical basis.
@@ -900,12 +901,93 @@ While $I_q(K)$ is not a ring, it does carry an action by $W(K)$: $I_q(K)$ is a $
 See \autocite[Sections 2, 8]{ElmanKarpenkoMerkurjev} for more on this.
 \end{rem}
 
+\subsection{Determinants and discriminants}
+We briefly introduce the concept of the determinant of a symmetric bilinear form.
+This allows us to simplify certain computations wit small-dimensional quadratic forms.
+\begin{prop}
+Let $(V_1, B_1)$ and $(V_2, B_2)$ be symmetric bilinear spaces with bases $\mf{B}_1$ and $\mf{B}_2$.
+Then $\det (M_\mf{B_1}(B_1)) \equiv \det (M_{\mf{B}_2}(B_2)) \bmod K^{\times 2}$.
+\end{prop}
+\begin{proof}
+It suffices to consider the case $V_1 = V_2 = K^n$ for $n = \dim(V_1)$, and where $\mf{B}_1$ is the canonical basis $\lbrace e_1, \ldots, e_n \rbrace$.
+Let $C \in \mbb{M}_n(K)^\times$ be the base change matrix between $\mf{B}_1$ and $\mf{B}_2$, i.e. ~such that $\mf{B}_2 = \lbrace Ce_1, \ldots, Ce_n \rbrace$.
+We see that for column vectors $v, w \in K^n$ we have
+\begin{displaymath}
+v^T C^T M_{\mf{B}_{1}}(B) C w = B(Cv, Cw) = v^T M_{\mf{B}_2}(B) w
+\end{displaymath}
+whence $M_{\mf{B}_2}(B) = C^T M_{\mf{B}_{1}}(B) C$ and hence $\det(M_{\mf{B}_2}(B)) = \det(M_{\mf{B}_{1}}(B)) \det(C)^2 \equiv \det(M_{\mf{B}_2}(B)) \bmod K^{\times 2}$ as desired.
+\end{proof}
+\begin{defi}
+For a nonsingular symmetric bilinear space $(V, B)$, we define the \emph{determinant}\index{determinant} of $(V, B)$ (or simply of $B$) to be the equivalence class of $\det(M_{\mf{B}}(B))$ in $K^\times/K^{\times 2}$, where $\mf{B}$ is any basis of $V$.
+We denote it simply by $\det(V, B)$.
+
+For a quadratic space $(V, q)$, we define its determinant as the determinant of $(V, \frac{\mf{b}_q}{2})$.
+\end{defi}
+\begin{prop}\label{P:det-computation-rules}
+We have the following immediate observations.
+\begin{enumerate}
+\item For nonsinfular quadratic space $(V_1, q_1)$ and $(V_2, q_2)$ we have $\det ((V_1, q_1) \perp (V_2, q_2)) = \det(V_1, q_1) \cdot \det(V_2, q_2)$.
+\item For $a_1, \ldots, a_n \in K^\times$ we have $\det(\langle a_1, \ldots, a_n \rangle_K) \equiv a_1 \cdots a_n \bmod K^{\times 2}$.
+\item $\det(\mbb{H}_K) \equiv -1 \bmod K^{\times 2}$.
+\end{enumerate}
+\end{prop}
+In general, over a field where $-1$ is not a square, determinants of Witt equivalent quadratic forms might differ by a minus sign.
+This can be easily remedied.
+\begin{defi}
+Let $(V, q)$ be a nonsingular quadratic space.
+We define its \emph{discriminant}\index{discriminant} (in some books called \emph{signed determinant}) to be
+$$ \disc(V, q) = (-1)^{\binom{\dim(V)}{2}} \det(V, q) \in K^\times/K^{\times 2}.$$
+\end{defi}
+\begin{prop}
+The map
+$$ WK \to K^\times/K^{\times 2} : [(V, q)] \mapsto \disc(V, q) $$
+is a well-defined surjective group homomorphism.
+\end{prop}
+\begin{proof}
+For the well-definedness, we need to check that is $(V, q) \equiv (V', q')$, then $d(V, q) = d(V', q')$.
+It suffices to consider the case where $(V', q') = (V, q) \perp \mbb{H}_K$.
+We compute using \Cref{P:det-computation-rules} that
+\begin{align*}
+d((V, q) \perp \mbb{H}_K) &= (-1)^{\binom{\dim(V)+2}{2}}\det((V, q) \perp \mbb{H}_K ) \\
+&= - (-1)^{\binom{\dim(V)}{2}} \det(V, q) \det(\mbb{H}_K) \\
+&= (-1)^{\binom{\dim(V)}{2}} \det(V, q) = d(V, q)
+\end{align*}
+as desired.
+This concludes the proof of the well-definedness of the map.
+The fact that it is a group homomorphism is now also immediate from \Cref{P:det-computation-rules} and the observation that $\binom{n}{2} + \binom{m}{2} \equiv \binom{n+m}{2} \bmod 2$ for $n, m \in \nat$.
+For the surjectivity, it suffices to observe that $d(\langle a \rangle_K) \equiv a \bmod K^{\times 2}$ for $a \in K^\times$.
+\end{proof}
+As announced, determinants are a useful invariant of quadratic spaces which can help to simplify certain calculations.
+We give an important example.
+\begin{prop}
+Let $a, b, c \in K^\times$ and assume that $c \in D_K(\langle a, b \rangle_K)$.
+Then $\langle a, b \rangle_K \cong \langle c, abc \rangle_K$.
+\end{prop}
+\begin{proof}
+By \Cref{P:diagonalisation} we have $\langle a, b \rangle_K \cong \langle c, d \rangle_K$ for some $d \in K^\times$.
+But since $cd \equiv \det(\langle c, d \rangle_K) \equiv \det(\langle a, b \rangle_K) \equiv ab \bmod K^\times$, we must have $d \equiv abc \bmod K^{\times 2}$, whereby $\langle c, d \rangle_K \cong \langle c, abc \rangle_K$.
+This concludes the proof.
+\end{proof}
+
+\subsection{Multiplicative forms}
+
+
 \subsection{Exercises}
 \begin{enumerate}
-\item Compute the Witt ring of the following fields.
+\item Compute the Witt ring of $\cc$ and $\rr$.
+\item Let $K$ be a finite field with $\charac(K) \neq 2$.
+Show the following:
+\begin{enumerate}
+\item $\lvert K^\times / K^{\times 2} \rvert = 2$,
+\item Every nonsingular $2$-dimensional quadratic form over $K$ is universal.
+\item Assume $d \in K^\times \setminus K^{\times 2}$.
+Every anisotropic quadratic form over $K$ is isometric to precisely one of the following forms:
 \begin{displaymath}
-\cc \qquad \rr \qquad \ff_3 \qquad \ff_5
+\langle \rangle_K \qquad \langle 1 \rangle_K \qquad \langle d \rangle_K \qquad \langle 1, -d \rangle_K
 \end{displaymath}
+\item If $\lvert K \rvert \equiv 1 \bmod 4$, then $-1 \in K^{\times 2}$ and $WK \cong (\zz/2\zz)[T]/(T^2 + 1)$.
+\item If $\lvert K \rvert \equiv 3 \bmod 4$, then $-1 \not\in K^{\times 2}$ and $WK \cong \zz/4\zz$.
+\end{enumerate}
 \end{enumerate}
 
 \printindex
