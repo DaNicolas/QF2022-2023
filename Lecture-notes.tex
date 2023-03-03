@@ -52,6 +52,9 @@
 \DeclareMathOperator{\rad}{rad}
 \newcommand{\disc}{\mathrm{d}}
 
+\newcommand{\llangle}{\langle\!\langle}
+\newcommand{\rrangle}{\rangle\!\rangle}
+
 \title{Quadratic forms and class fields II: lecture notes}
 \author{Nicolas Daans}
 \date{\today}
@@ -460,7 +463,7 @@ Hence $(W, q\vert_W) \cong \mbb{H}_K$.
 \end{proof}
 In particular, it follows from \Cref{P:hyperbolic-plane} that the hyperbolic plane is, up to isometry, the only two-dimensional nonsingular isotropic quadratic form over $K$.
 We also obtain the following
-\begin{cor}
+\begin{cor}\label{C:isotropic->universal}
 Every nonsingular isotropic quadratic space is universal.
 \end{cor}
 \begin{proof}
@@ -970,7 +973,59 @@ This concludes the proof.
 \end{proof}
 
 \subsection{Multiplicative forms}
+When $(V, q)$ is a quadratic space, the set $D_K(q)$ of elements of $K^\times$ represented by $q$ is in general just a subset of $K^\times$.
+We now consider a class of quadratic forms where this is in fact a subgroup.
+\begin{defi}
+Let $(V, q)$ be a quadratic space.
+We call the set
+$$ G_K(q) = \lbrace a \in K^\times \mid (V, q) \cong (V, aq) \rbrace $$
+the set of \emph{similarity factors of $(V, q)$}\index{similarity factor}.
 
+By a \emph{multiplicative form over $K$}\index{multiplicative form} (some books use the term \emph{round form}) we mean a nonsingular quadratic form $q$ for which $D_K(q) = G_K(q)$.
+\end{defi}
+\begin{eg}
+Any nonsingular universal quadratic form is multiplicative. In particular, in view of \Cref{C:isotropic->universal}, every nonsingular isotropic quadratic form is multiplicative.
+\end{eg}
+\begin{prop}
+Let $(V, q)$ be a nonsingular quadratic space over $K$.
+\begin{enumerate}
+\item $G_K(q)$ is a subgroup of $K^\times$ that contains $K^{\times 2}$.
+\item $G_K(q) \cdot D_K(q) = D_K(q)$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+The first part is clear.
+For the second part, consider $a \in G_K(q)$ and $d \in D_K(q)$, then $ad \in G_K(aq) = G_K(q)$.
+\end{proof}
+For the rest of this subsection, assume $\charac(K) \neq 2$.
+\begin{thm}[Witt]\label{T:Witt-multiplicative-forms}
+Let $q$ be a multiplicative form over $K$ and $a \in K^\times$.
+Then the form $\langle 1, a \rangle_K \otimes q$ is multiplicative.
+Moreover, if $q$ is anisotropic, then $\langle 1, a \rangle_K \otimes q$ is either anisotropic or hyperbolic.
+\end{thm}
+\begin{proof}
+%TODO
+\end{proof}
+\begin{defi}
+For $n \in \nat$ and $a_1, \ldots, a_n \in K^\times$, we use the notation
+$$ \llangle a_1, \ldots, a_n \rrangle_K = \langle 1, -a_1 \rangle \otimes \ldots \otimes \langle 1, -a_n \rangle_K. $$
+In particular, $\llangle \rrangle_K = \langle 1 \rangle_K$, and $\llangle a_1 \rrangle_K = \langle 1, -a_1 \rangle_K$.
+We call a form which is isometric to $\llangle a_1, \ldots, a_n \rrangle_K$ for some $a_1, \ldots, a_n \in K^\times$ an \emph{$n$-fold Pfister form}\index{Pfister form}.
+\end{defi}
+\begin{thm}\label{T:Pfister-forms}
+Let $q$ be a Pfister form over $K$.
+Then $q$ is multiplicative, and either anisotropic or hyperbolic.
+\end{thm}
+\begin{proof}
+Assume that $q$ is an $n$-fold Pfister form; we proceed by induction on $n$.
+%TODO
+\end{proof}
+\begin{rem}
+Over a field $K$ of characteristic $2$, one can define a notion of Pfister form both for bilinear forms and for quadratic forms.
+As usual, we refer to \autocite[Sections 7, 9]{ElmanKarpenkoMerkurjev} for a characteristic-free exposition.
+An example of a $1$-fold quadratic Pfister form is given by $X^2 + XY + aY^2$ for $a \in K$.
+These quadratic Pfister forms still satisfy the properties of \Cref{T:Pfister-forms} in characteristic $2$.
+\end{rem}
 
 \subsection{Exercises}
 \begin{enumerate}
