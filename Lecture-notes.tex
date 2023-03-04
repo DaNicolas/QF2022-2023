@@ -1004,7 +1004,7 @@ Then the form $\langle 1, a \rangle_K \otimes q$ is multiplicative.
 Moreover, if $q$ is anisotropic, then $\langle 1, a \rangle_K \otimes q$ is either anisotropic or hyperbolic.
 \end{thm}
 \begin{proof}
-%TODO
+Let $q' = \langle 1, a \rangle_K \otimes q$. %TODO
 \end{proof}
 \begin{defi}
 For $n \in \nat$ and $a_1, \ldots, a_n \in K^\times$, we use the notation
@@ -1018,7 +1018,11 @@ Then $q$ is multiplicative, and either anisotropic or hyperbolic.
 \end{thm}
 \begin{proof}
 Assume that $q$ is an $n$-fold Pfister form; we proceed by induction on $n$.
-%TODO
+For $n = 0$ we have $q \cong \langle 1 \rangle_K$; this form is anisotropic and $D_K(q) = K^{\times 2} = G_K(q)$.
+Assume now $n > 0$.
+We have that $q \cong \langle 1, -a \rangle_K \otimes q'$ for some $(n-1)$-fold Pfister form $q'$ over $K$.
+If $q'$ is anisotropic, then by induction hypothesis, $q'$ is multiplicative, and by \Cref{T:Witt-multiplicative-forms} also $q$ is multiplicative and either anisotropic or hyperbolic.
+If $q'$ is isotropic, then by induction hypothesis it is hyperbolic, and then also $q$ is hyperbolic by \Cref{C:tensor-product-hyperbolic}.
 \end{proof}
 \begin{rem}
 Over a field $K$ of characteristic $2$, one can define a notion of Pfister form both for bilinear forms and for quadratic forms.
@@ -1028,9 +1032,10 @@ These quadratic Pfister forms still satisfy the properties of \Cref{T:Pfister-fo
 \end{rem}
 
 \subsection{Exercises}
+In all exercises, assume $K$ is a field with $\charac(K) \neq 2$.
 \begin{enumerate}
 \item Compute the Witt ring of $\cc$ and $\rr$.
-\item Let $K$ be a finite field with $\charac(K) \neq 2$.
+\item Let $K$ be finite.
 Show the following:
 \begin{enumerate}
 \item $\lvert K^\times / K^{\times 2} \rvert = 2$,
@@ -1043,6 +1048,12 @@ Every anisotropic quadratic form over $K$ is isometric to precisely one of the f
 \item If $\lvert K \rvert \equiv 1 \bmod 4$, then $-1 \in K^{\times 2}$ and $WK \cong (\zz/2\zz)[T]/(T^2 + 1)$.
 \item If $\lvert K \rvert \equiv 3 \bmod 4$, then $-1 \not\in K^{\times 2}$ and $WK \cong \zz/4\zz$.
 \end{enumerate}
+\item
+Show that for $a, b \in K^\times$ and a Pfister form $q$ over $K$ we have $\llangle a \rrangle_K \otimes q \cong \llangle b \rrangle_K \otimes q$ if and only if $ab \in D_K(q)$.
+\item Let $q$ be a $4$-dimensional nonsingular quadratic form over $K$ with $1 \in D_K(q)$ and $\det(q) \equiv 1 \bmod K^{\times 2}$.
+Show that $q$ is a Pfister form.
+\item Let $q$ be a universal $3$-dimensional quadratic form over $K$.
+Show that $q$ is isotropic.
 \end{enumerate}
 
 \printindex
