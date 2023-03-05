@@ -962,7 +962,7 @@ For the surjectivity, it suffices to observe that $d(\langle a \rangle_K) \equiv
 \end{proof}
 As announced, determinants are a useful invariant of quadratic spaces which can help to simplify certain calculations.
 We give an important example.
-\begin{prop}
+\begin{prop}\label{P:binary-form-determinant}
 Let $a, b, c \in K^\times$ and assume that $c \in D_K(\langle a, b \rangle_K)$.
 Then $\langle a, b \rangle_K \cong \langle c, abc \rangle_K$.
 \end{prop}
@@ -986,7 +986,7 @@ By a \emph{multiplicative form over $K$}\index{multiplicative form} (some books 
 \begin{eg}
 Any nonsingular universal quadratic form is multiplicative. In particular, in view of \Cref{C:isotropic->universal}, every nonsingular isotropic quadratic form is multiplicative.
 \end{eg}
-\begin{prop}
+\begin{prop}\label{P:GKq-properties}
 Let $(V, q)$ be a nonsingular quadratic space over $K$.
 \begin{enumerate}
 \item $G_K(q)$ is a subgroup of $K^\times$ that contains $K^{\times 2}$.
@@ -1004,7 +1004,23 @@ Then the form $\langle 1, a \rangle_K \otimes q$ is multiplicative.
 Moreover, if $q$ is anisotropic, then $\langle 1, a \rangle_K \otimes q$ is either anisotropic or hyperbolic.
 \end{thm}
 \begin{proof}
-Let $q' = \langle 1, a \rangle_K \otimes q$. %TODO
+Let $q' = \langle 1, a \rangle_K \otimes q$. We have $1 \in G_K(q) = D_K(q) \subseteq D_K(q')$ and hence $G_K(q') \subseteq D_K(q')$ by \Cref{P:GKq-properties}.
+Now consider $c \in D_K(q')$ arbitrary.
+Then there exist $s, t \in D_K(q) = G_K(q)$ such that $c \in D_K(\langle s, at \rangle_K)$.
+By \Cref{P:binary-form-determinant} it follows that $\langle s, at \rangle_K \cong \langle c, acst \rangle_K$.
+We now compute that
+\begin{align*}
+q' &\cong q \perp a q \cong sq \perp atq \cong \langle s, at \rangle_K \otimes q \cong \langle c, acst \rangle_K \otimes q \\
+&\cong cq \perp acstq \perp cq \perp acq \cong cq'
+\end{align*}
+wherbey $c \in G_K(q')$.
+Since $c \in D_K(q')$ was chosen arbitrarily, we conclude that $q'$ is multiplicative.
+
+For the second part, assume that $q$ is anisotropic and $q'$ is isotropic.
+Then there exist $s, t \in D_K(q) = G_K(q)$ with $\langle s, at \rangle_K \cong \mbb{H}_K$.
+We compute that
+$$ q' \cong q \perp aq \cong sq \perp atq \cong \langle s, at \rangle_K \otimes q \cong \mbb{H}_K \otimes q $$
+which is hyperbolic by \Cref{C:tensor-product-hyperbolic}.
 \end{proof}
 \begin{defi}
 For $n \in \nat$ and $a_1, \ldots, a_n \in K^\times$, we use the notation
@@ -1012,7 +1028,7 @@ $$ \llangle a_1, \ldots, a_n \rrangle_K = \langle 1, -a_1 \rangle \otimes \ldots
 In particular, $\llangle \rrangle_K = \langle 1 \rangle_K$, and $\llangle a_1 \rrangle_K = \langle 1, -a_1 \rangle_K$.
 We call a form which is isometric to $\llangle a_1, \ldots, a_n \rrangle_K$ for some $a_1, \ldots, a_n \in K^\times$ an \emph{$n$-fold Pfister form}\index{Pfister form}.
 \end{defi}
-\begin{thm}\label{T:Pfister-forms}
+\begin{thm}[Pfister]\label{T:Pfister-forms}
 Let $q$ be a Pfister form over $K$.
 Then $q$ is multiplicative, and either anisotropic or hyperbolic.
 \end{thm}
@@ -1024,9 +1040,24 @@ We have that $q \cong \langle 1, -a \rangle_K \otimes q'$ for some $(n-1)$-fold 
 If $q'$ is anisotropic, then by induction hypothesis, $q'$ is multiplicative, and by \Cref{T:Witt-multiplicative-forms} also $q$ is multiplicative and either anisotropic or hyperbolic.
 If $q'$ is isotropic, then by induction hypothesis it is hyperbolic, and then also $q$ is hyperbolic by \Cref{C:tensor-product-hyperbolic}.
 \end{proof}
+We mention the following partial converse to \Cref{T:Pfister-forms}, the proof of which is outside the scope of this course.
+We will not use this result in the sequel.
+For a quadratic form $q$ over $K$ and a field extension $L/K$, we denote by $q_L$ the quadratic form over $L$ obtained by extending scalars from $K$ to $L$ (we will see a formal definition later).
+\begin{thm}[Pfister]
+Let $q$ be an anisotropic quadratic form over $K$.
+The following are equivalent.
+\begin{enumerate}
+\item $q$ is a Pfister form,
+\item $D_L(q_L)$ is a subgroup of $L^\times$ for every field extension $L/K$,
+\item $1 \in D_K(q)$ and for every field extension $L/K$ we have that $q_L$ is either anisotropic or hyperbolic.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+See \autocite[Theorem 23.2 and Corollary 23.4]{ElmanKarpenkoMerkurjev}.
+\end{proof}
 \begin{rem}
 Over a field $K$ of characteristic $2$, one can define a notion of Pfister form both for bilinear forms and for quadratic forms.
-As usual, we refer to \autocite[Sections 7, 9]{ElmanKarpenkoMerkurjev} for a characteristic-free exposition.
+As usual, we refer to \autocite[Sections 7 and 9]{ElmanKarpenkoMerkurjev} for a characteristic-free exposition.
 An example of a $1$-fold quadratic Pfister form is given by $X^2 + XY + aY^2$ for $a \in K$.
 These quadratic Pfister forms still satisfy the properties of \Cref{T:Pfister-forms} in characteristic $2$.
 \end{rem}
@@ -1054,6 +1085,8 @@ Show that for $a, b \in K^\times$ and a Pfister form $q$ over $K$ we have $\llan
 Show that $q$ is a Pfister form.
 \item Let $q$ be a universal $3$-dimensional quadratic form over $K$.
 Show that $q$ is isotropic.
+\item Show that $D_\qq(\langle 1, 1 \rangle_\qq)$ is a subgroup of $\qq^\times$.
+Is the same true for $D_\qq(\langle 1, 1, 1 \rangle_\qq)$?
 \end{enumerate}
 
 \printindex
