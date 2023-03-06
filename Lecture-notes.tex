@@ -871,7 +871,7 @@ Similarly
 \end{align*}
 where the second isometry follows from \Cref{C:tensor-product-hyperbolic}.
 This shows that the operations $\perp$ and $\otimes$ are well-defined on $W(K) \times W(K)$.
-The associativity and commutativity are immediate from the corresponding properties for $\perp$ and $\otimes$ on quadratic spaces.
+The associativity, commutativity and distributivity are immediate from the corresponding properties for $\perp$ and $\otimes$ on quadratic spaces.
 That $[\langle \rangle_K]$ is a neutral element for $\perp$ and $[\langle 1 \rangle_K]$ is a neutral element for $\otimes$, is readily verified.
 Finally, that $[(V, -q)] = -[(V, q)]$ is a reformulation of \Cref{P:q-q-hyperbolic}.
 \end{proof}
@@ -879,11 +879,11 @@ Finally, that $[(V, -q)] = -[(V, q)]$ is a reformulation of \Cref{P:q-q-hyperbol
 The set $W(K)$ endowed with the ring structure described in \Cref{T:WittRing} is called the \emph{Witt ring of $K$}\index{Witt group}.
 \end{defi}
 \begin{prop}\label{P:fundamental-ideal}
-The $W(K)$ has a unique ideal of index $2$, which is given by
+$W(K)$ has a unique ideal of index $2$, which is given by
 $$ I(K) = \lbrace [(V, q)] \mid \dim V \text{ even} \rbrace.$$
 \end{prop}
 \begin{proof}
-Observe that, if two nonsingular quadratic spaces are Witt equivalent, then there dimensions differ by an even number.
+Observe that, if two nonsingular quadratic spaces are Witt equivalent, then their dimensions differ by an even number.
 In particular, if one of them has even dimension, then the other too.
 It is easy to see that $I(K)$ is an ideal.
 Furthermore, it has index 2, because for any quadratic space $(V, q)$, either $[(V, q)] \in I(K)$, or $[(V, q) \perp \langle 1 \rangle_K] \in I(K)$.
@@ -906,9 +906,9 @@ See \autocite[Sections 2, 8]{ElmanKarpenkoMerkurjev} for more on this.
 
 \subsection{Determinants and discriminants}
 We briefly introduce the concept of the determinant of a symmetric bilinear form.
-This allows us to simplify certain computations wit small-dimensional quadratic forms.
+This allows us to simplify certain computations with small-dimensional quadratic forms.
 \begin{prop}
-Let $(V_1, B_1)$ and $(V_2, B_2)$ be symmetric bilinear spaces with bases $\mf{B}_1$ and $\mf{B}_2$.
+Let $(V_1, B_1)$ and $(V_2, B_2)$ be isometric symmetric bilinear spaces with bases $\mf{B}_1$ and $\mf{B}_2$.
 Then $\det (M_\mf{B_1}(B_1)) \equiv \det (M_{\mf{B}_2}(B_2)) \bmod K^{\times 2}$.
 \end{prop}
 \begin{proof}
@@ -924,16 +924,21 @@ whence $M_{\mf{B}_2}(B) = C^T M_{\mf{B}_{1}}(B) C$ and hence $\det(M_{\mf{B}_2}(
 For a nonsingular symmetric bilinear space $(V, B)$, we define the \emph{determinant}\index{determinant} of $(V, B)$ (or simply of $B$) to be the equivalence class of $\det(M_{\mf{B}}(B))$ in $K^\times/K^{\times 2}$, where $\mf{B}$ is any basis of $V$.
 We denote it simply by $\det(V, B)$.
 
-For a quadratic space $(V, q)$, we define its determinant as the determinant of $(V, \frac{\mf{b}_q}{2})$.
+If $\charac(K) \neq 2$ and $(V, q)$ is a quadratic space over $K$, we define its determinant as the determinant of $(V, \frac{\mf{b}_q}{2})$.
 \end{defi}
+For the rest of this subsection, assume that all quadratic spaces are considered over a field $K$ with $\charac(K) \neq 2$.
+
 \begin{prop}\label{P:det-computation-rules}
-We have the following immediate observations.
+We have the following properties.
 \begin{enumerate}
-\item For nonsinfular quadratic space $(V_1, q_1)$ and $(V_2, q_2)$ we have $\det ((V_1, q_1) \perp (V_2, q_2)) = \det(V_1, q_1) \cdot \det(V_2, q_2)$.
+\item For nonsingular quadratic spaces $(V_1, q_1)$ and $(V_2, q_2)$ we have $\det ((V_1, q_1) \perp (V_2, q_2)) = \det(V_1, q_1) \cdot \det(V_2, q_2)$.
 \item For $a_1, \ldots, a_n \in K^\times$ we have $\det(\langle a_1, \ldots, a_n \rangle_K) \equiv a_1 \cdots a_n \bmod K^{\times 2}$.
 \item $\det(\mbb{H}_K) \equiv -1 \bmod K^{\times 2}$.
 \end{enumerate}
 \end{prop}
+\begin{proof}
+These can be verified easily via the definition.
+\end{proof}
 In general, over a field where $-1$ is not a square, determinants of Witt equivalent quadratic forms might differ by a minus sign.
 This can be easily remedied.
 \begin{defi}
@@ -983,9 +988,6 @@ the set of \emph{similarity factors of $(V, q)$}\index{similarity factor}.
 
 By a \emph{multiplicative form over $K$}\index{multiplicative form} (some books use the term \emph{round form}) we mean a nonsingular quadratic form $q$ for which $D_K(q) = G_K(q)$.
 \end{defi}
-\begin{eg}
-Any nonsingular universal quadratic form is multiplicative. In particular, in view of \Cref{C:isotropic->universal}, every nonsingular isotropic quadratic form is multiplicative.
-\end{eg}
 \begin{prop}\label{P:GKq-properties}
 Let $(V, q)$ be a nonsingular quadratic space over $K$.
 \begin{enumerate}
@@ -995,7 +997,7 @@ Let $(V, q)$ be a nonsingular quadratic space over $K$.
 \end{prop}
 \begin{proof}
 The first part is clear.
-For the second part, consider $a \in G_K(q)$ and $d \in D_K(q)$, then $ad \in G_K(aq) = G_K(q)$.
+For the second part, consider $a \in G_K(q)$ and $d \in D_K(q)$, then $ad \in D_K(aq) = D_K(q)$.
 \end{proof}
 For the rest of this subsection, assume $\charac(K) \neq 2$.
 \begin{thm}[Witt]\label{T:Witt-multiplicative-forms}
@@ -1011,9 +1013,9 @@ By \Cref{P:binary-form-determinant} it follows that $\langle s, at \rangle_K \co
 We now compute that
 \begin{align*}
 q' &\cong q \perp a q \cong sq \perp atq \cong \langle s, at \rangle_K \otimes q \cong \langle c, acst \rangle_K \otimes q \\
-&\cong cq \perp acstq \perp cq \perp acq \cong cq'
+&\cong cq \perp acstq \cong cq \perp acq \cong cq'
 \end{align*}
-wherbey $c \in G_K(q')$.
+whereby $c \in G_K(q')$.
 Since $c \in D_K(q')$ was chosen arbitrarily, we conclude that $q'$ is multiplicative.
 
 For the second part, assume that $q$ is anisotropic and $q'$ is isotropic.
