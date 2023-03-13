@@ -51,6 +51,7 @@
 \DeclareMathOperator{\trdeg}{trdeg}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\sign}{sign}
 \newcommand{\disc}{\mathrm{d}}
 
 \newcommand{\llangle}{\langle\!\langle}
@@ -1163,8 +1164,8 @@ But then $\det(V, q) = -1$, which implies $(V, q) \cong \mbb{H}_K$, whereby $[(V
 
 \begin{prop}\label{P:boundI2}
 Let $(V, q)$ be a nonsingular quadratic space with $[(V, q)] \in I^2K$ and $m = \dim(V)/2 - 1$.
-There exist $2$-fold Pfister forms $\pi_1, \ldots, \pi_m$ and $a_1, \ldots, a_m \in K^\times$ such that
-$ [(V, q)] = \sum_{i=1}^m [a_i\pi_i] $.
+There exist scaled $2$-fold Pfister forms $\pi_1, \ldots, \pi_m$ such that
+$ [(V, q)] = \sum_{i=1}^m [\pi_i] $.
 \end{prop}
 \begin{proof}
 This follows from \Cref{L:split-off-2fold-Pfister} by induction on $m$.
@@ -1198,12 +1199,100 @@ Consider a non-zero element of $WK$, then it is of the form $[(V, q)]$ for some 
 For $n > \log_2(\dim(V))$ we have $[(V, q)] \not\in I^n K$ by \Cref{T:Arason-Pfister}.
 \end{proof}
 
+\subsection{Signatures and orderings}
+Much more can be said about the structure of Witt rings, see e.g.~\autocite[Chapter V]{ElmanKarpenkoMerkurjev} or \autocite[Sections VIII.7 and VIII.8]{Lam}.
+We explain one important source of structure on a field which can introduce complexity into its Witt ring: orderings.
+For a very detailed discussion of orderings and their interplay with quadratic forms, we refer to the book \autocite{OrderingsLam}.
+\begin{defi}
+Let $K$ be a field.
+A \emph{(field) ordering on $K$}\index{ordering}\index{field ordering|see{ordering}} is a total order relation $\leq$ on $K$ such that for all $a, b, c \in K$ one has
+\begin{itemize}
+\item if $a \leq b$, then $a + c \leq a / b$,
+\item if $a \leq b$ and $0 \leq c$, then $ac \leq bc$.
+\end{itemize}
+A tuple $(K, \leq)$ where $K$ is a field and $\leq$ is an ordering on $K$ is called an \emph{ordered field}\index{ordered field|see{ordering}}.
+\end{defi}
+\begin{egs}
+The usual ordering on $\rr$ ($a \leq b$ if and only if $b-a$ is a square in $\rr$) makes $\rr$ into an ordered field. \\
+If $(K, \leq_K)$ is an ordered field and $\iota : L \to K$ is an embedding of fields, then one can naturally define an ordering $\leq_L$ on $L$ as follows: for $a, b \in L$, let $a \leq_L b$ if and only if $\iota(a) \leq_K \iota(b)$.
+In particular, an embedding of a field $L$ into $\rr$ naturally induces an ordering on $L$.
+\end{egs}
+Whether or not a field can be made to carry an ordering is characterised by the Artin-Schreier Theorem.
+\begin{thm}[Artin-Schreier]\label{T:Artin-Schreier}
+A field $K$ carries a field ordering if and only if $-1$ is not a sum of squares in $K$.
+\end{thm}
+\begin{proof}
+If $K$ carries an ordering $\leq$, then for any $a \in K$ one has $0 \leq a^2$.
+In particular, it follows that any sum of squares in $K$ is positive.
+But $-1$ is negative, hence it cannot be a sum of squares.
+See exercise \eqref{ex:orderings-computations} for details.
+
+See \autocite[\nopp 1.5]{OrderingsLam} for a proof of the other implication.
+\end{proof}
+The above implies in particular that, if $K$ is a field carrying an ordering, then $\charac(K) = 0$.
+\begin{defi}
+Let $(K, \leq)$ be an ordered field, $(V, q)$ a nonsingular quadratic form over $K$.
+We call $q$ \emph{positive definite with respect to $\leq$}\index{definite, positive, negative, in-} if $0 \leq a$ for all $a \in D_K(q)$, \emph{negative definite with respect to $\leq$} if $a \leq 0$ for all $a \in D_K(q)$, and \emph{indefinite with respect to $\leq$} if it is neither positive nor negative definite.
+\end{defi}
+\begin{thm}[Sylvester's law of inertia]\label{T:Sylvester}
+Let $(K, \leq)$ be an ordered field, $(V, q)$ a nonsingular quadratic form over $K$.
+There exist quadratic forms $q^+$ and $q^-$ which are positive definite with respect to $\leq$ and such that $q \cong q^+ \perp -q^-$.
+The numbers $\dim(q^+)$ and $\dim(q^-)$ depend only on $q$.
+\end{thm}
+\begin{proof}
+For the existence of $q^+$ and $q^-$, we may assume by \Cref{C:diagonalisation} that $q$ is a diagonal form, from which the statement is immediate, since every $1$-dimensional nonsingular quadratic form is either positive or negative definite with respect to $\leq$.
+
+For the uniqueness, assume that $q \cong q^+_1 \perp -q^-_1 \cong q^+_2 \perp -q^-_2$ for some totally positive forms $q^+_1, q^-_1, q^+_2, q^-_2$ over $K$.
+That is, there exist subspaces $U, W$ of $V$ such that $q\vert_U \cong q^+_1$, $q\vert_{U^\perp} \cong -q^{-1}_1$, $q\vert_W \cong q^+_2$, $q\vert_{W^\perp} \cong -q^-_2$.
+We observe that $U^\perp \cap W = 0 = U \cap W^\perp$ since $D_{K}(q^+_1) \cap D_{K}(-q^-_2) = \emptyset = D_{K}(q^+_2) \cap D_{K}(-q^-_1)$.
+From this we infer that $\dim(U) = \dim(W)$ and thus $\dim(U^\perp) = \dim(W^\perp)$, whereby $\dim(q^+_1) = \dim(q^+_2)$ and $\dim(q^-_1) = \dim(q^-_2)$.
+\end{proof}
+\begin{defi}
+For an ordered field $(K, \leq)$ and a nonsingular quadratic form $q$ over $K$, define the \emph{signature of $q$ with respect to $\leq$}\index{signature} as the integer $\dim(q^+)-\dim(q^-)$, where $q^+$ and $q^-$ are as in \Cref{T:Sylvester} - this depends only on the isometry class of $q$.
+We denote this integer by $\sign_\leq(q)$.
+\end{defi}
+\begin{prop}\label{P:signature-homomorphism}
+Let $(K, \leq)$ be an ordered field.
+There is a well-defined ring homomorphism
+$$ WK \to \zz : [(V, q)] \mapsto \sign_\leq(q). $$
+\end{prop}
+\begin{proof}
+Observe that $\sign_\leq(\mbb{H}_K) = \sign_\leq(\langle 1, -1 \rangle_K) = 0$.
+It follows that, if $(V, q) \equiv (W, q')$, then $\sign_{\leq}(q) = \sign_\leq(q')$, showing that the map is well-defined on $WK$.
+The fact that it is a group homomorphism is also easily verified.
+\end{proof}
+The kernel of the homomorphism defined in \Cref{P:signature-homomorphism} is a prime ideal of $WK$ called the \emph{signature ideal of $\leq$}\index{signature!ideal}, which we will denote by $I_\leq K$.
+
+We mention without proof two theorems about the prime ideals of the Witt ring and about torsion in the Witt ring.
+\begin{thm}[Leicht-Lorenz, Harrison, 1970]
+Let $\mf{p}$ be a prime ideal of $WK$ different from $IK$.
+Then we can define an ordering $\leq$ on $K$ as follows: for $a, b \in K$ with $a \neq b$, set
+$$ a \leq b \quad\Leftrightarrow\quad [\langle 1, a - b \rangle_K] \in \mf{p}.$$
+Furthermore, $I_{\leq}K \subseteq \mf{p}$.
+\end{thm}
+\begin{proof}
+See e.g.~\autocite[Theorem 31.24]{ElmanKarpenkoMerkurjev}.
+\end{proof}
+Finally, we mention without proof the following theorem of Pfister about torsion in the Witt ring.
+\begin{thm}[Pfister's Local-global principle, 1966]\label{T:Pfisters-LGP}
+The following are equivalent for a quadratic space $(V, q)$ over $K$.
+\begin{enumerate}
+\item $\sign_\leq(q) = 0$ for all orderings $\leq$ on $K$,
+\item $[(V, q)]$ is torsion in $WK$,
+\item $[(V, q)]$ is $2^k$-torsion in $WK$ for some $k \in \nat$.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+See e.g.~\autocite[Theorem VIII.3.2]{Lam}.
+\end{proof}
+
+
 \subsection{Exercises}
 Let always $K$ be a field with $\charac(K) \neq 2$.
 \begin{enumerate}
 \item Show the following:
 \begin{enumerate}
-\item $\lvert K^\times / K^{\times 2} \rvert < \infty$ if and only if, for every $n \in \nat$, there exist up to isomorphism only finitely many anisotropic quadratic forms of dimension $n$,
+\item $\lvert K^\times / K^{\times 2} \rvert < \infty$ if and only if, for every $n \in \nat$, there exist up to isomorphism only finitely many anisotropic quadratic forms of dimension $n$, if and only if $WK$ is a noetherian ring,
 \item $\lvert WK \rvert < \infty$ if and only if $\lvert K^\times / K^{\times 2} \rvert < \infty$ and $-1$ is a sum of squares in $K$.
 \end{enumerate}
 %\item Using \Cref{T:Arason-Pfister}, show that the following are equivalent for $n$-fold Pfister forms $q_1$ and $q_2$ over $K$:
@@ -1212,6 +1301,26 @@ Let always $K$ be a field with $\charac(K) \neq 2$.
 %\item $q_1 \cong aq_2$ for some $a \in K^\times$,
 %\item $[q_1 \perp -q_2] \in I^{n+1}K$.
 %\end{enumerate}
+\item\label{ex:orderings-computations}
+Let $(K, \leq)$ be an ordered field.
+Show the following for $a, b, c \in K$:
+\begin{itemize}
+\item $-1 \leq 0 \leq 1$,
+\item if $a \leq b$ and $c \leq 0$, then $bc \leq ac$,
+\item $0 \leq a^2$.
+\end{itemize}
+\item Verify the details in the proof of \Cref{P:signature-homomorphism}.
+\item Use \Cref{T:Pfisters-LGP} to prove \Cref{T:Artin-Schreier}.
+\item Let $(K, \leq)$ be an ordered field, $n \in \nat$ and $\alpha \in I^n K$.
+Show that $\sign_{\leq}(\alpha) \in 2^n\zz$.
+\item Let $K/\qq$ be an algebraic field extension.
+When $\iota : K \to \rr$ is an embedding, show that $\leq_\iota$, defined by
+$$ a \leq_\iota b \quad\Leftrightarrow\quad \iota(a) \leq \iota(b)$$
+for all $a, b \in K$, is a field ordering.
+Conversely, for a field ordering $\leq$ on $K$, show that
+$$ \iota_\leq : K \to \rr : x \mapsto \inf \lbrace \frac{m}{n} \mid m, n \in \nat, n \neq 0, nx \leq m \rbrace $$
+defines an embedding of fields.
+Conclude that there is a bijection between the set of field orderings on $K$ and the set of embeddings of $K$ into $\rr$. 
 \end{enumerate}
 \printindex
 \printbibliography
