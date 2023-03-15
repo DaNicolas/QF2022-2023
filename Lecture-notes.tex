@@ -1028,7 +1028,8 @@ Moreover, if $q$ is anisotropic, then $\langle 1, a \rangle_K \otimes q$ is eith
 \end{thm}
 \begin{proof}
 Let $q' = \langle 1, a \rangle_K \otimes q$. We have $1 \in G_K(q) = D_K(q) \subseteq D_K(q')$ and hence $G_K(q') \subseteq D_K(q')$ by \Cref{P:GKq-properties}.
-Now consider $c \in D_K(q')$ arbitrary.
+Further, observe that $D_K(q) \cup aD_K(q) = G_K(q) \cup aG_K(q) \subseteq G_K(q')$. 
+Now consider $c \in D_K(q') \setminus (D_K(q) \cup aD_K(q))$ arbitrary.
 Then there exist $s, t \in D_K(q) = G_K(q)$ such that $c \in D_K(\langle s, at \rangle_K)$.
 By \Cref{P:binary-form-determinant} it follows that $\langle s, at \rangle_K \cong \langle c, acst \rangle_K$.
 We now compute that
@@ -1169,9 +1170,8 @@ There exist scaled $2$-fold Pfister forms $\pi_1, \ldots, \pi_m$ such that
 $ [(V, q)] = \sum_{i=1}^m [\pi_i] $.
 \end{prop}
 \begin{proof}
-It follows from \Cref{L:split-off-2fold-Pfister} by induction on $m$ that we can find a quadratic form $\pi_m$ and scaled $2$-fold Pfister forms $\pi_1, \ldots, \pi_{m-1}$ such that $ [(V, q)] = \sum_{i=1}^m [\pi_i] $.
-Since $[(V, q)] \in I^2K$, we obtain by \Cref{P:disc-map-kernel} that $1 = \disc(V, q) = \disc(\pi_1)\cdots\disc(\pi_m) = \disc(\pi_m)$ in $K^{\times}/K^{\times 2}$.
-Now it follows by exercise \ref{Exercises-L4}.\ref{ex:4-dim-Pfister} that also $\pi_m$ is a scaled $2$-fold Pfister form.
+If $m = 0$ then, as in the proof of \Cref{P:disc-map-kernel}, we see that $(V, q)$ must be hyperbolic, hence $[(V, q)] = 0$.
+The general case now follows from \Cref{L:split-off-2fold-Pfister} by induction on $m$.
 \end{proof}
 \begin{ques}\label{Q:boundIn}
 Let $n, d \in \nat^+$.
@@ -1201,6 +1201,17 @@ We have $\bigcap_{n \in \nat} I^n K = \lbrace 0 \rbrace$.
 Consider a non-zero element of $WK$, then it is of the form $[(V, q)]$ for some non-zero anisotropic quadratic form $q$.
 For $n > \log_2(\dim(V))$ we have $[(V, q)] \not\in I^n K$ by \Cref{T:Arason-Pfister}.
 \end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item Show the following:
+\begin{enumerate}
+\item $\lvert K^\times / K^{\times 2} \rvert < \infty$ if and only if, for every $n \in \nat$, there exist up to isomorphism only finitely many anisotropic quadratic forms of dimension $n$, if and only if $WK$ is a noetherian ring,
+\item $\lvert WK \rvert < \infty$ if and only if $\lvert K^\times / K^{\times 2} \rvert < \infty$ and $-1$ is a sum of squares in $K$.
+\end{enumerate}
+\end{enumerate}
+
+\section{Lecture 6}
 
 \subsection{Signatures and orderings}
 Much more can be said about the structure of Witt rings, see e.g.~\autocite[Chapter V]{ElmanKarpenkoMerkurjev} or \autocite[Sections VIII.7 and VIII.8]{Lam}.
@@ -1292,11 +1303,6 @@ See e.g.~\autocite[Theorem VIII.3.2]{Lam}.
 \subsection{Exercises}
 Let always $K$ be a field with $\charac(K) \neq 2$.
 \begin{enumerate}
-\item Show the following:
-\begin{enumerate}
-\item $\lvert K^\times / K^{\times 2} \rvert < \infty$ if and only if, for every $n \in \nat$, there exist up to isomorphism only finitely many anisotropic quadratic forms of dimension $n$, if and only if $WK$ is a noetherian ring,
-\item $\lvert WK \rvert < \infty$ if and only if $\lvert K^\times / K^{\times 2} \rvert < \infty$ and $-1$ is a sum of squares in $K$.
-\end{enumerate}
 %\item Using \Cref{T:Arason-Pfister}, show that the following are equivalent for $n$-fold Pfister forms $q_1$ and $q_2$ over $K$:
 %\begin{enumerate}[(i)]
 %\item $q_1 \cong q_2$,
@@ -1324,6 +1330,7 @@ $$ \iota_\leq : K \to \rr : x \mapsto \inf \lbrace \frac{m}{n} \mid m, n \in \na
 defines an embedding of fields.
 Conclude that there is a bijection between the set of field orderings on $K$ and the set of embeddings of $K$ into $\rr$. 
 \end{enumerate}
+
 \printindex
 \printbibliography
 \end{document}
