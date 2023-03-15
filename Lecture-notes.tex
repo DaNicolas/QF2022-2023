@@ -20,6 +20,7 @@
 \newtheorem{lem}[defi]{Lemma}
 \newtheorem{thm}[defi]{Theorem}
 \newtheorem{cor}[defi]{Corollary}
+\newtheorem{ques}[defi]{Question}
 \theoremstyle{remark}
 \newtheorem{rem}[defi]{Remark}
 \newtheorem{eg}[defi]{Example}
@@ -50,6 +51,7 @@
 \DeclareMathOperator{\trdeg}{trdeg}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\sign}{sign}
 \newcommand{\disc}{\mathrm{d}}
 
 \newcommand{\llangle}{\langle\!\langle}
@@ -71,10 +73,13 @@ We denote by $\nat$ the set of natural numbers.
 We write $\nat^+$ for the proper subset of non-zero numbers.
 For a ring $R$, we denote by $R^\times$ the set of invertible elements of $R$; if $R$ is a field, then $R^\times = R \setminus \lbrace 0 \rbrace$.
 
+\subsection*{Acknowledgements}
+The course follows to a large extent the exposition from Lam's book \autocite{Lam}.
+For this introductory course, we focus on fields of characteristic different from $2$, where the theory of quadratic forms is simpler than over fields of characteristic $2$.
+The book of Elman, Karpenko and Merkurjev \autocite{ElmanKarpenkoMerkurjev} is a great reference for those who want to learn more about quadratic form theory over fields of arbitrary characteristic, and some parts of this course which hold in arbitrary characteristic, are inspired by their work.
+Finally, I gratefully acknowledge the inspiration taken from the course ``Quadratic Forms'' taught by Karim Johannes Becher at the University of Antwerp in Belgium, which has to a large extent shaped my vision on modern quadratic form theory.
+
 \section{Lecture 1}
-We follow to a large extent the exposition from Lam's book \autocite{Lam}.
-For this introductory course, we focus on fields of characteristic different from $2$.
-We recommend the book of Elman, Karpenko and Merkurjev \autocite{ElmanKarpenkoMerkurjev} for those who want to learn more about quadratic form theory over fields of arbitrary characteristic.
 \subsection{Bilinear and quadratic forms}
 Let always $K$ be a field, $n \in \nat$.
 \begin{defi}
@@ -876,7 +881,7 @@ That $[\langle \rangle_K]$ is a neutral element for $\perp$ and $[\langle 1 \ran
 Finally, that $[(V, -q)] = -[(V, q)]$ is a reformulation of \Cref{P:q-q-hyperbolic}.
 \end{proof}
 \begin{defi}
-The set $W(K)$ endowed with the ring structure described in \Cref{T:WittRing} is called the \emph{Witt ring of $K$}\index{Witt group}.
+The set $W(K)$ endowed with the ring structure described in \Cref{T:WittRing} is called the \emph{Witt ring of $K$}\index{Witt ring}.
 \end{defi}
 \begin{prop}\label{P:fundamental-ideal}
 $W(K)$ has a unique ideal of index $2$, which is given by
@@ -957,7 +962,7 @@ In particular, if $m$ and $n$ are two natural numbers and at least one of them i
 \begin{equation}\label{E:binom2}
 (-1)^{\binom{m}{2}}(-1)^{\binom{n}{2}} = (-1)^{\binom{m+n}{2}}.
 \end{equation}
-\begin{prop}
+\begin{prop}\label{P:disc-map}
 If $(V, q)$ and $(V', q')$ are Witt equivalent nonsingular quadratic spaces, then $\disc(V, q) = \disc(V', q')$.
 Furthermore, the map
 $$ IK \to K^\times/K^{\times 2} : [(V, q)] \mapsto \disc(V, q) $$
@@ -1023,7 +1028,8 @@ Moreover, if $q$ is anisotropic, then $\langle 1, a \rangle_K \otimes q$ is eith
 \end{thm}
 \begin{proof}
 Let $q' = \langle 1, a \rangle_K \otimes q$. We have $1 \in G_K(q) = D_K(q) \subseteq D_K(q')$ and hence $G_K(q') \subseteq D_K(q')$ by \Cref{P:GKq-properties}.
-Now consider $c \in D_K(q')$ arbitrary.
+Further, observe that $D_K(q) \cup aD_K(q) = G_K(q) \cup aG_K(q) \subseteq G_K(q')$. 
+Now consider $c \in D_K(q') \setminus (D_K(q) \cup aD_K(q))$ arbitrary.
 Then there exist $s, t \in D_K(q) = G_K(q)$ such that $c \in D_K(\langle s, at \rangle_K)$.
 By \Cref{P:binary-form-determinant} it follows that $\langle s, at \rangle_K \cong \langle c, acst \rangle_K$.
 We now compute that
@@ -1061,7 +1067,7 @@ If $q'$ is isotropic, then by induction hypothesis it is hyperbolic, and then al
 We mention the following partial converse to \Cref{T:Pfister-forms}, the proof of which is outside the scope of this course.
 We will not use this result in the sequel.
 For a quadratic form $q$ over $K$ and a field extension $L/K$, we denote by $q_L$ the quadratic form over $L$ obtained by extending scalars from $K$ to $L$ (we will see a formal definition later).
-\begin{thm}[Pfister]
+\begin{thm}[Pfister]\label{T:Pfister-characterisation}
 Let $q$ be an anisotropic quadratic form over $K$.
 The following are equivalent.
 \begin{enumerate}
@@ -1080,7 +1086,7 @@ An example of a $1$-fold quadratic Pfister form is given by $X^2 + XY + aY^2$ fo
 These quadratic Pfister forms still satisfy the properties of \Cref{T:Pfister-forms} in characteristic $2$.
 \end{rem}
 
-\subsection{Exercises}
+\subsection{Exercises}\label{Exercises-L4}
 In all exercises, assume $K$ is a field with $\charac(K) \neq 2$.
 \begin{enumerate}
 \item Compute the Witt ring of $\cc$ and $\rr$.
@@ -1099,13 +1105,110 @@ Every anisotropic quadratic form over $K$ is isometric to precisely one of the f
 \end{enumerate}
 \item
 Show that for $a, b \in K^\times$ and a Pfister form $q$ over $K$ we have $\llangle a \rrangle_K \otimes q \cong \llangle b \rrangle_K \otimes q$ if and only if $ab \in D_K(q)$.
-\item Let $q$ be a $4$-dimensional nonsingular quadratic form over $K$ with $1 \in D_K(q)$ and $\det(q) \equiv 1 \bmod K^{\times 2}$.
+\item\label{ex:4-dim-Pfister} Let $q$ be a $4$-dimensional nonsingular quadratic form over $K$ with $1 \in D_K(q)$ and $\det(q) \equiv 1 \bmod K^{\times 2}$.
 Show that $q$ is a Pfister form.
 \item Let $q$ be a universal $3$-dimensional quadratic form over $K$.
 Show that $q$ is isotropic.
 \item Show that $D_\qq(\langle 1, 1 \rangle_\qq)$ is a subgroup of $\qq^\times$.
 Is the same true for $D_\qq(\langle 1, 1, 1 \rangle_\qq)$?
 \item Give an example of an anisotropic quadratic form which is multiplicative but not a Pfister form.
+\end{enumerate}
+
+\section{Lecture 5}
+
+\subsection{Powers of the fundamental ideal}
+Assume throughout that $K$ is a field with $\charac(K) \neq 2$ and that all quadratic spaces are considered over $K$.
+
+We will consider powers of the fundamental ideal $IK$ of the Witt ring $WK$. For a natural number $n$, we denote by $I^n K$ the ideal of $WK$ generated by products of $n$ elements in $IK$.
+By convention, we set $I^0K = WK$.
+We obtain a natural filtration
+$$ WK = I^0K \supseteq I^1 K = IK \supseteq I^2 K \supseteq I^3 K \supseteq \ldots $$
+We can try to understand the group $WK$ better by studying the ideals $I^n K$, and/or by studying the quotients $I^n K / I^{n+1} K$.
+We already know that $WK/I^1K \cong \zz / 2\zz$, see \Cref{P:fundamental-ideal}.
+\begin{prop}\label{P:generators-InK}
+For $n \geq 1$, the ideal $I^n K$ is generated as a group by the Witt classes of $n$-fold Pfister forms in $K$.
+\end{prop}
+\begin{proof}
+First observe that, for $a, b \in K^\times$, we have
+$$ \langle a, b \rangle_K \equiv \langle a, b \rangle_K \perp \mbb{H}_K \cong \langle 1, a \rangle_K \perp -\langle 1, -b \rangle_K \cong \llangle -a \rrangle_K \perp -\llangle b \rrangle_K.$$
+Since every nonsingular binary quadratic form is isometric to $\langle a, b \rangle_K$ for some $a, b \in K^\times$ and since binary quadratic forms generate $IK$, we conclude that $IK$ is generated as a group by $1$-fold Pfister forms.
+Since an $n$-fold Pfister form is by definition a product of $n$ $1$-fold Pfister forms, we conclude that $I^n K$ is generated by $n$-fold Pfister forms, as desired.
+\end{proof}
+A quadratic form over $K$ which is isometric to $a\pi$ for a Pfister form $\pi$ and an element $a \in K^\times$ is called a \emph{scaled Pfister form}\index{Pfister form!scaled}.
+Observe that the class of a scaled $n$-fold Pfister form lies in $I^nK$.
+\begin{lem}\label{L:split-off-2fold-Pfister}
+Let $(V, q)$ a nonsingular quadratic space over $K$, assume $\dim(V) \geq 3$.
+There exists a quadratic space $(W, q')$ with $\dim(W) = \dim(V) - 2$ and a scaled Pfister form $(P, q_P)$ such that $(V, q) \equiv (W', q') \perp (P, q_P)$.
+\end{lem}
+\begin{proof}
+In view of \Cref{C:diagonalisation} it suffice to consider the case where $(V, q) = \langle a, b, c \rangle_K$ for $a, b, c \in K^\times$.
+Now set $q' = \langle -abc \rangle_K$ and $q_P = abc\llangle -ab, ac \rrangle_K$.
+We have $\dim(q') = 1$ and we compute that
+$$q' \perp q_P \cong \langle -abc , abc \rangle_K \perp \langle a, b, c \rangle_K \cong \mbb{H}_K \perp q \equiv q.$$
+Hence $q'$ and $q_P$ are as desired.
+\end{proof}
+\begin{prop}\label{P:disc-map-kernel}
+The homomorphism
+$\disc : IK \to K^\times/K^{\times 2} : [(V, q)] \mapsto \disc(V, q)$ from \Cref{P:disc-map} has kernel $I^2 K$.
+In particular, $IK/I^2K \cong K^\times / K^{\times 2}$.
+\end{prop}
+\begin{proof}
+One computes that, for any $a, b \in K^\times$, we have
+$$ \disc(\llangle a, b \rrangle_K) = \disc(\langle 1, -a, -b, ab \rangle_K) \equiv 1 \bmod K^{\times 2}.$$
+So, any equivalence class of a $2$-fold Pfister form lies in the kernel of $\disc$.
+In view of \Cref{P:generators-InK} we conclude that $I^2K \subseteq \Ker(\disc)$.
+
+For the converse implication, consider $\zeta \in \Ker(\disc)$.
+By \Cref{L:split-off-2fold-Pfister} we have $\zeta \equiv [(V, q)] \bmod I^2K$ where $\dim(V) = 2$.
+Since $I^2K \subseteq \Ker(\disc)$ by the previous paragraph, we conclude that $\disc(V, q) = \disc(\zeta) \equiv 1 \bmod K^{\times 2}$.
+But then $\det(V, q) = -1$, which implies $(V, q) \cong \mbb{H}_K$, whereby $[(V, q)] = 0$, and we conclude that $\zeta \in I^2K$ as desired.
+\end{proof}
+
+\begin{prop}\label{P:boundI2}
+Let $(V, q)$ be a nonsingular quadratic space with $[(V, q)] \in I^2K$ and $m = \dim(V)/2 - 1$.
+There exist scaled $2$-fold Pfister forms $\pi_1, \ldots, \pi_m$ such that
+$ [(V, q)] = \sum_{i=1}^m [\pi_i] $.
+\end{prop}
+\begin{proof}
+If $m = 0$ then, as in the proof of \Cref{P:disc-map-kernel}, we see that $(V, q)$ must be hyperbolic, hence $[(V, q)] = 0$.
+The general case now follows from \Cref{L:split-off-2fold-Pfister} by induction on $m$.
+\end{proof}
+\begin{ques}\label{Q:boundIn}
+Let $n, d \in \nat^+$.
+Does there exist a natural number $m$ such that every $d$-dimensional quadratic space $(V, q)$ with $[(V, q)] \in I^n K$ is Witt equivalent to a sum of $m$ scaled Pfister forms?
+\end{ques}
+For $n = 1$ the answer is easy (every binary nonsingular quadratic form is a scaled Pfister form, so one can take $m = d/2$), and for $n = 2$ one can take $m = d/2 - 1$ by \Cref{P:boundI2}.
+For $n = 3$ it is known that such a number $m$ exists, and that it grows at least exponentially as a function of $d$ \autocite{EssentialDimensionI3K}.
+For $n > 3$ it is completely open whether such a number $m$ exists in general.
+Of course, over many specific fields $K$, often the situation is much easier.
+
+We mention the following major theorem, without providing a proof.
+\begin{thm}[Arason-Pfister Hauptsatz, 1971]\label{T:Arason-Pfister}
+Let $n \in \nat$ and let $(V, q)$ be a nonsingular quadratic space with $[(V, q)] \in I^n K$.
+\begin{enumerate}
+\item Either $\dim(V) \geq 2^n$ or $(V, q)$ is hyperbolic.
+\item If $\dim(V) = 2^n$, then $(V, q)$ is a scaled $n$-fold Pfister form.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+The first part is \autocite[Theorem 23.7]{ElmanKarpenkoMerkurjev}.
+The second part follows from combining the first part with \Cref{T:Pfister-characterisation}.
+\end{proof}
+\begin{cor}
+We have $\bigcap_{n \in \nat} I^n K = \lbrace 0 \rbrace$.
+\end{cor}
+\begin{proof}
+Consider a non-zero element of $WK$, then it is of the form $[(V, q)]$ for some non-zero anisotropic quadratic form $q$.
+For $n > \log_2(\dim(V))$ we have $[(V, q)] \not\in I^n K$ by \Cref{T:Arason-Pfister}.
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item Show the following:
+\begin{enumerate}
+\item $\lvert K^\times / K^{\times 2} \rvert < \infty$ if and only if, for every $n \in \nat$, there exist up to isomorphism only finitely many anisotropic quadratic forms of dimension $n$, if and only if $WK$ is a noetherian ring,
+\item $\lvert WK \rvert < \infty$ if and only if $\lvert K^\times / K^{\times 2} \rvert < \infty$ and $-1$ is a sum of squares in $K$.
+\end{enumerate}
 \end{enumerate}
 
 \printindex
