@@ -53,6 +53,13 @@
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\sign}{sign}
 \newcommand{\disc}{\mathrm{d}}
+\newcommand{\SOS}[2][]{
+\ifx \equal{#1}{}
+{\Sigma {#2}^2}
+\else
+{\Sigma_{#1} {#2}^2}
+\fi
+}
 
 \newcommand{\llangle}{\langle\!\langle}
 \newcommand{\rrangle}{\rangle\!\rangle}
@@ -1479,6 +1486,43 @@ Show that every quadratic form over $K$ remains anisotropic over $L$.
 \item Prove \Cref{C:Pfister-isotropic-quadratic}.
 \item Let $(V, q)$ be a quadratic space and $d \in K^\times$ such that $q_{K(\sqrt{d})}$ is hyperbolic.
 Show that $-d \in G_K(q)$.
+\end{enumerate}
+
+\section{Lecture 7}
+\subsection{Application: sums of squares}
+For a field $K$ and a natural number $n \in \nat$, we denote
+\begin{align*}
+\SOS[n]{K} = \left\lbrace \sum_{i=1}^n a_i^2 \enspace\middle|\enspace a_1, \ldots, a_n \in K \right\rbrace \quad\text{ and }\quad \SOS{K} = \bigcup_{i=1}^{\infty} \SOS[i]{K}.
+\end{align*}
+\begin{prop}
+For $n \in \nat$, $\SOS[2^n]{K} \setminus \lbrace 0 \rbrace$ is a subgroup of $K^\times$.
+\end{prop}
+\begin{proof}
+We have
+$$ \SOS[2^n]{K} \setminus \lbrace 0 \rbrace = D_K(\underbrace{\llangle -1, \ldots, -1 \rrangle_K}_{n \text{ times}}) = G_K(\llangle -1, \ldots, -1 \rrangle_K) $$
+by \Cref{T:Pfister-forms}, whereby $\SOS[2^n]{K} \setminus \lbrace 0 \rbrace$ is indeed a subgroup of $K^\times$.
+\end{proof}
+We define the \emph{level}\index{level} and the \emph{Pythagoras number}\index{Pythagoras number} of the field $K$ as respectively
+\begin{align*}
+s(K) &= \inf \lbrace n \in \nat \mid -1 \in \SOS[n]K \rbrace \in \nat \cup \lbrace \infty \rbrace \\
+p(K) &= \inf \lbrace n \in \nat \mid \SOS K = \SOS[n]K \rbrace \in \nat \cup \lbrace \infty \rbrace.
+\end{align*}
+\begin{egs}
+One has $s(\cc) = p(\cc) = 1 = p(\rr)$, and $s(\rr) = \infty$.
+For a field $K$ of characteristic $2$ one has $p(K) = s(K) = 1$.
+If $K$ is a finite field of odd characteristic, then $p(K) = 2$, and $s(K)$ is either $1$ or $2$, depending on whether $\lvert K \rvert \equiv 1 \bmod 4$ or not.
+\end{egs}
+\begin{prop}
+We have $s(K) = 2^n$ for some $n \in \nat$.
+If $s(K) < \infty$, then $s(K) \leq p(K) \leq p(K)+1$.
+\end{prop}
+\begin{proof}
+
+\end{proof}
+
+\subsection{Exercises}
+\begin{enumerate}
+\item Compute $p(\rr(X))$.
 \end{enumerate}
 
 \printindex
