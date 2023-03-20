@@ -1301,6 +1301,7 @@ See e.g.~\autocite[Theorem VIII.3.2]{Lam}.
 
 \subsection{Field extensions}
 For a field extension $L/K$ and a $K$-vector space $V$, the vector space $V_L = V \otimes L$ naturally becomes an $L$-vector space, with $\dim_K(V) = \dim_L(V_L)$ - see \Cref{P:tensor-product-properties}.
+Furthermore, via the embedding $V \to V \otimes L : v \mapsto v \otimes 1$, we may identify $V$ with a $K$-subspace of $V \otimes L$.
 We will now see that this gives a natural way to `extend' symmetric bilinear forms from $K$ to $L$.
 \begin{prop}\label{P:scalar-extension}
 Consider a field $K$ and a field extension $L/K$.
@@ -1400,6 +1401,50 @@ By \Cref{T:Springer} we have that $(V_L, q_L)$ is anisotropic, whereby $0 \neq [
 This shows that $\Ker(r_{L/K}) = 0$, whereby $r_{L/K}$ is injective.
 \end{proof}
 
+We now characterise what it means that an anisotropic quadratic space $(V, q)$ becomes isotropic or hyperbolic over a quadratic extension.
+For the rest of this subsection, let $K$ be a field with $\charac(K) \neq 2$, let $d \in K^\times \setminus K^{\times 2}$ and let $L = K[\sqrt{d}]$.
+\begin{prop}\label{P:isotropic-quadratic-extension}
+Let $(V, q)$ be an anisotropic quadratic space over $K$.
+Then $q_L$ is isotropic if and only if there exists $a \in D_K(q)$ such that $\langle a, -ad \rangle_K$ is a subform of $(V, q)$.
+\end{prop}
+\begin{proof}
+Since $\langle a, -ad \rangle_L$ is isotropic for all $a \in K^\times$, one implication is clear.
+
+Assume now that $q_L$ is isotropic, so there exists $v \in V_L \setminus \lbrace 0 \rbrace$ such that $q_L(v) = 0$.
+We may write $v = v_0 + \delta v_1$ with $v_0, v_1 \in V$ and $\delta \in L$ with $\delta^2 = d$.
+We compute that
+$$0 = q_L(v) = q_L(v_0 + \delta v_1) = q(v_0) + dq(v_1) + \mf{b}_q(v_0, v_1)\delta.$$
+Since $\lbrace 1, \delta \rbrace$ is a $K$-basis of $L$, we must have $q(v_0) + dq(v_1) = 0 = \mf{b}_q(v_0, v_1)$.
+Since $v \neq 0$, both $v_0$ and $v_1$ are non-zero, and since $q$ is anisotropic, this implies that $q(v_0) = -dq(v_1) \neq 0$.
+Set $a = q(v_1)$.
+We see that $v_0$ and $v_1$ are linearly independent and orthogonal, and thus finally that, for $U = Kv_0 + Kv_1$, we have $(U, q\vert_U) \cong \langle a, -ad \rangle_K$.
+\end{proof}
+\begin{cor}
+Let $(V, q)$ be an anisotropic quadratic space over $K$.
+Then $q_L$ is hyperbolic if and only if there exists a quadratic space $(V', q')$ over $K$ such that $(V, q) \cong \llangle d \rrangle_K \otimes q'$.
+\end{cor}
+\begin{proof}
+Since $\llangle d \rrangle_L$ is hyperbolic, it follows from \Cref{C:tensor-product-hyperbolic} that $(\llangle d \rrangle_K \otimes q')_L \cong \llangle d \rrangle_L \otimes q'_L$ is hyperbolic for any non-singular quadratic space $(V', q')$.
+This concludes the proof for one implication.
+
+For the other implication, assume that $q_L$ is hyperbolic.
+We proceed by induction on $\dim(V)$.
+For $\dim(V) = 0$ there is nothing to show (we may take $q' = 0$).
+Assume that $\dim(V) > 0$.
+Then $q$ is isotropic.
+By \Cref{P:isotropic-quadratic-extension} there exists $a \in D_K(q)$ such that $q \cong \langle a, -ad \rangle_K \perp \hat{q}$ for some quadratic form $\hat{q}$ over $K$.
+Since $q_L \cong \langle a, -ad \rangle_L \perp \hat{q}_L \cong \mbb{H}_L \perp \hat{q}_L$ and $q_L$ is hyperbolic, by Witt Cancellation (\Cref{T:Witt-Cancellation}) also $\hat{q}_L$ is hyperbolic.
+By induction hypothesis, $\hat{q} \cong \langle 1, -d \rangle_K \otimes \hat{q}'$ for some quadratic form $\hat{q}'$.
+Now set $q' = \langle a \rangle_K \perp \hat{q}'$, then this $q'$ is as desired.
+\end{proof}
+\begin{cor}\label{C:Pfister-isotropic-quadratic}
+Let $q$ be an anisotropic Pfister form over $K$ and let $q'$ be a form such that $q \cong \langle 1 \rangle_K \perp q'$.
+Then $q_{L}$ is isotropic if and only if $-d \in D_K(q')$.
+\end{cor}
+\begin{proof}
+Exercise.
+\end{proof}
+
 \subsection{Exercises}
 Let always $K$ be a field with $\charac(K) \neq 2$.
 \begin{enumerate}
@@ -1431,6 +1476,9 @@ defines an embedding of fields.
 Conclude that there is a bijection between the set of field orderings on $K$ and the set of embeddings of $K$ into $\rr$. 
 \item Let $L = K(X)$.
 Show that every quadratic form over $K$ remains anisotropic over $L$.
+\item Prove \Cref{C:Pfister-isotropic-quadratic}.
+\item Let $(V, q)$ be a quadratic space and $d \in K^\times$ such that $q_{K(\sqrt{d})}$ is hyperbolic.
+Show that $-d \in G_K(q)$.
 \end{enumerate}
 
 \printindex
