@@ -1302,7 +1302,7 @@ See e.g.~\autocite[Theorem VIII.3.2]{Lam}.
 \subsection{Field extensions}
 For a field extension $L/K$ and a $K$-vector space $V$, the vector space $V_L = V \otimes L$ naturally becomes an $L$-vector space, with $\dim_K(V) = \dim_L(V_L)$ - see \Cref{P:tensor-product-properties}.
 Furthermore, via the embedding $V \to V \otimes L : v \mapsto v \otimes 1$, we may identify $V$ with a $K$-subspace of $V \otimes L$.
-We will now see that this gives a natural way to `extend' symmetric bilinear forms from $K$ to $L$.
+We will now see that this gives a natural way to `extend' symmetric bilinear and quadratic forms from $K$ to $L$.
 \begin{prop}\label{P:scalar-extension}
 Consider a field $K$ and a field extension $L/K$.
 For a symmetric bilinear space $(V, B)$ over $K$, there exists a unique symmetric bilinear form $B_L$ on $V_L = V \otimes_K L$ such that, for all $v, w \in V$ and $x, y \in L$, one has
@@ -1311,12 +1311,13 @@ Similarly, for a quadratic space $(V, q)$ over $K$, there exists a unique quadra
 $$q_L(v \otimes x) = x^2q(v).$$
 \end{prop}
 \begin{proof}
-The first statement is an immediate application of \Cref{P:tensor-product-SBS}, using that the map $L \times L \to K : (x, y) \mapsto xy$ is symmetric bilinear.
+By redoing the proof of \Cref{P:tensor-product-SBS}, using that $B$ is a $K$-bilinear map and also $L \times L \to L : (x, y) \mapsto xy$ is a $K$-bilinear map, one obtains that there exists a unique symmetric $K$-bilinear map $B_L : V_L \times V_L \to L$ such that $B_L(v \otimes x, w \otimes y) = B(v, w)xy$ for all $v, w \in V$ and $x, y \in L$.
+One then readily verifies that this map is actually also $L$-bilinear.
 
 For the second statement, let us first consider uniqueness.
 If $q_L$ is a quadratic form on $V_L$ such that $q_L(v \otimes x) = x^2 q(v)$ for all $v \in V$ and $x \in L$, then clearly $\mf{b}_{q_L} = (\mf{b}_q)_L$.
 But $q_L$ is completely determined by its values on elementary tensors and by $\mf{b}_{q_L}$.
-This shows uniqueness
+This shows uniqueness.
 
 If $\charac(K) \neq 2$, then the existence part of the statement follows from the fact that $q(v) = \frac{1}{2}\mf{b}_q(v, v)$ for all $v \in V$: one may just define $q_L(\alpha) = \frac{1}{2}(\mf{b}_q)_L(\alpha, \alpha)$ for $\alpha \in V_L$.
 If $\charac(K) = 2$ then a more subtle argument is needed: one still has that there exists some bilinear (but not necessarily symmetric) form $B : V \times V \to K$ such that $q(v) = B(v, v)$ for all $v \in V$ (see \autocite[Section 7]{ElmanKarpenkoMerkurjev}) and one may then set $q_L(\alpha) = B_L(\alpha, \alpha)$ for $\alpha \in V_L$.
@@ -1339,7 +1340,7 @@ Assume $\charac(K) \neq 2$, let $L/K$ be a field extension.
 The rule
 $$ r_{L/K} : WK \to WL : [(V, q)] \mapsto [(V_L, q_L)] $$
 gives a well-defined ring homomorphism.
-For $n \in \nat$, we have $r_{L_K}(I^n K) \subseteq I^nL$.
+For $n \in \nat$, we have $r_{L/K}(I^n K) \subseteq I^nL$.
 \end{prop}
 \begin{defi}\label{D:restriction-homomorphism}
 Let $L/K$ be a field extension.
