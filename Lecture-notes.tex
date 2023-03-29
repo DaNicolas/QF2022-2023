@@ -410,7 +410,7 @@ Observe that a non-zero totally isotropic space is always singular.
 \begin{prop}\label{P:radical-residue}
 Assume $\charac(K) \neq 2$. Let $(V, q)$ be a quadratic space.
 Then the map
-$$ \ovl{q} : V/V^\perp \to K : v \mapsto q(\ovl{v})$$
+$$ \ovl{q} : V/V^\perp \to K : \ovl{v} \mapsto q(v)$$
 is a well-defined nonsingular quadratic form.
 \end{prop}
 \begin{proof}
@@ -831,7 +831,7 @@ where
 \item $(V_h^{(1)}, q_h^{(1)})$ and $(V_h^{(2)}, q_h^{(2)})$ are hyperbolic (or zero),
 \item $(V_a^{(1)}, q_a^{(1)})$ and $(V_a^{(2)}, q_a^{(2)})$ are anisotropic.
 \end{itemize}
-We say that $(V^{(1)}, q^{(1)})$ and $(V^{(2)}, q^{(2)})$ are \emph{Witt equivalent}\index{Witt equivalent} if $\dim V_t^{(1)}  =\dim V_t^{(2)}$ and $(V^{(1)}, q_a^{(1)}) \cong (V^{(2)}, q_a^{(2)})$.
+We say that $(V^{(1)}, q^{(1)})$ and $(V^{(2)}, q^{(2)})$ are \emph{Witt equivalent}\index{Witt equivalent} if $\dim V_t^{(1)}  =\dim V_t^{(2)}$ and $(V_a^{(1)}, q_a^{(1)}) \cong (V_a^{(2)}, q_a^{(2)})$.
 We denote this by $(V^{(1)}, q^{(1)}) \equiv (V^{(2)}, q^{(2)})$.
 \end{defi}
 \Cref{T:Witt-Decomposition} yields that this is indeed a well-defined equivalence relation on the class of quadratic spaces over $K$.
@@ -1112,6 +1112,8 @@ Show that $q$ is isotropic.
 \item Show that $D_\qq(\langle 1, 1 \rangle_\qq)$ is a subgroup of $\qq^\times$.
 Is the same true for $D_\qq(\langle 1, 1, 1 \rangle_\qq)$?
 \item Give an example of an anisotropic quadratic form which is multiplicative but not a Pfister form.
+\item Let $n \in \nat$ and suppose that $-1$ is a sum of $2^{n+1} - 1$ squares in $K$.
+Show that $-1$ is a sum of $2^n$ squares in $K$.
 \end{enumerate}
 
 \section{Lecture 5}
